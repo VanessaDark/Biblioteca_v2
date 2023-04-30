@@ -147,7 +147,7 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         int cantidad=Integer.parseInt(txt_cantidad.getText());
         
         
-       class_libro libros = new class_libro(libro, libro, autor, editorial, ediccion, fecha, cantidad);
+       class_libro libros = new class_libro(id, libro, autor, editorial, ediccion, fecha, cantidad);
        contenedorLibros.add(libros);
         
         JOptionPane.showMessageDialog(null, "Auto registrado y guardado exitosamente");

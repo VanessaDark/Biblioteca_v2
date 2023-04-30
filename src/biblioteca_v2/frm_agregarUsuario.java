@@ -5,6 +5,7 @@
 package biblioteca_v2;
 
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -114,6 +115,18 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         String correo=txt_correo.getText();
         String direccion=txt_direccion.getText();
        
+        
+        class_usuario usuario=new class_usuario(id, nombre, telefono, correo, direccion);
+        contenedorUsuarios.add(usuario);
+        
+        JOptionPane.showMessageDialog(null, "Usuario registrado");
+        
+        txt_idUsuario.setText("");
+        txt_nombre.setText("");
+        txt_telefono.setText("");
+        txt_correo.setText("");
+        txt_direccion.setText("");
+     
         
         
     }//GEN-LAST:event_btn_guardarActionPerformed

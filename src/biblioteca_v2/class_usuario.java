@@ -10,39 +10,31 @@ package biblioteca_v2;
  */
 public class class_usuario extends class_libro{
     
-    private String usuario;
+    private String id_Usuario;
     private String nombre;
-    private String telefono;
+    private int telefono;
     private String correo;
     private String direccion;
-
-    public class_usuario(String id_libro, String libro, String autor, String usuario, String nombre, String telefono, String correo, String direccion) {
+ 
+    public class_usuario(String id_libro, String libro, String autor,String id_Usuario, String nombre, int telefono, String correo, String direccion) {
         super(id_libro, libro, autor);
-        this.usuario = usuario;
+        this.id_Usuario=id_Usuario;
         this.nombre = nombre;
         this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
     }
 
-  
-
-    public void DatosUsuario(String usuario, String nombre, String telefono, String correo, String direccion) {
-        this.usuario = usuario;
-        this.nombre = nombre;
+    public class_usuario(String id_Usuario, String nombre, int telefono, String correo, String direccion) {
+        super(null, null, null);
+         this.id_Usuario=id_Usuario;
+        this.nombre=nombre;
         this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
     }
 
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
+    
 
     public String getNombre() {
         return nombre;
@@ -52,11 +44,11 @@ public class class_usuario extends class_libro{
         this.nombre = nombre;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
