@@ -10,11 +10,28 @@ package biblioteca_v2;
  */
 public class Biblioteca_v2 {
 
-    /**
-     * @param args the command line arguments
-     */
+     public static void porcentaje(){
+       Bienvenida bv=new Bienvenida();
+       bv.setVisible(true); 
+       Login lg=new Login();
+       try{
+         for(int i=0; i<=100; i++){
+           Thread.sleep(40);
+           bv.Porcentaje.setText(Integer.toString(i)+"%");
+           bv.Barra.setValue(i);  
+           
+           if(i ==100){
+               bv.setVisible(false);
+               lg.setVisible(true);
+           }
+       }  
+       }catch(Exception e){
+           
+       }
+    }
+     
     public static void main(String[] args) {
-        // TODO code application logic here
+       porcentaje();
     }
     
 }
