@@ -33,7 +33,7 @@ public class frm_agregarLibro extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btn_menu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txt_idLibro = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -59,12 +59,23 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Menu");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        btn_menu.setText("Menu");
+        btn_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         jLabel1.setText("Id");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
+
+        txt_idLibro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idLibroKeyTyped(evt);
+            }
+        });
         jPanel1.add(txt_idLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 79, 30));
 
         jLabel2.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
@@ -111,10 +122,20 @@ public class frm_agregarLibro extends javax.swing.JFrame {
 
         btn_eliminar.setText("Eliminar");
         btn_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 91, 33));
 
         btn_modificar.setText("Modificar");
         btn_modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 93, 33));
         jPanel1.add(jdate_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 230, 30));
 
@@ -137,7 +158,7 @@ public class frm_agregarLibro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        // TODO add your handling code here:
+        // Boton guardar libro
         String id=txt_idLibro.getText();
         String libro=txt_libro.getText();
         String autor=txt_autor.getText();
@@ -157,7 +178,76 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         txt_autor.setText("");
         txt_editorial.setText("");
         txt_edicion.setText("");
+        jdate_fecha.setCalendar(null);
+        txt_cantidad.setText("");
     }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void txt_idLibroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idLibroKeyTyped
+        // Codigo para buscar los datos
+        int press=evt.getKeyChar();
+        if(press==10){
+            String idEncontrado=txt_idLibro.getText().trim();
+            class_libro libro;
+            for(int i = 0; i < contenedorLibros.size(); i++){
+                libro=(class_libro)contenedorLibros.get(i);
+                if(idEncontrado.equalsIgnoreCase(libro.getId_libro())){
+                    txt_libro.setText(libro.getLibro());
+                    txt_autor.setText(libro.getAutor());
+                    txt_editorial.setText(libro.getEditorial());
+                    txt_edicion.setText(libro.getEdicion());
+                    buscar=i;
+                    break;
+                    
+                }//Fin if
+                    
+            }//fin for
+            
+        }//Fin if
+        
+        
+        
+    }//GEN-LAST:event_txt_idLibroKeyTyped
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        // Boton modificar
+         String id=txt_idLibro.getText();
+        String libro=txt_libro.getText();
+        String autor=txt_autor.getText();
+        String editorial=txt_editorial.getText();
+        String ediccion=txt_edicion.getText();
+         String fecha=((JTextField)jdate_fecha.getDateEditor().getUiComponent()).getText();
+        int cantidad=Integer.parseInt(txt_cantidad.getText());
+        
+        
+        class_libro libros = new class_libro(id, libro, autor, editorial, ediccion, fecha, cantidad);
+        contenedorLibros.set(buscar, libros);
+        
+        JOptionPane.showMessageDialog(null, "Datos de libro modificados");
+        
+        txt_idLibro.setText("");
+        txt_libro.setText("");
+        txt_editorial.setText("");
+        txt_edicion.setText("");
+        jdate_fecha.setCalendar(null);
+        txt_cantidad.setText("");
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        //Boton para borrar los datos
+         contenedorLibros.remove(buscar);
+         txt_idLibro.setText("");
+         txt_libro.setText("");
+         txt_autor.setText("");
+         txt_editorial.setText("");
+         txt_edicion.setText("");
+         jdate_fecha.setCalendar(null);
+         txt_cantidad.setText("");
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
+        // Boton menu
+        
+    }//GEN-LAST:event_btn_menuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,9 +287,9 @@ public class frm_agregarLibro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_menu;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_tabla;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

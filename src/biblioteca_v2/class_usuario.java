@@ -15,14 +15,21 @@ public class class_usuario extends class_libro{
     private int telefono;
     private String correo;
     private String direccion;
+    
+    private String id_prestamo;
+    private String fechaInicio;
+    private String fechaDevolucion;
  
-    public class_usuario(String id_libro, String libro, String autor,String id_Usuario, String nombre, int telefono, String correo, String direccion) {
+    public class_usuario(String id_libro, String libro, String autor,String id_Usuario, String nombre, int telefono, String correo, String direccion,String id_prestamo,String fechaInicio,String fechaDevolucion) {
         super(id_libro, libro, autor);
         this.id_Usuario=id_Usuario;
         this.nombre = nombre;
         this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
+        this.id_prestamo=id_prestamo;
+        this.fechaInicio=fechaInicio;
+        this.fechaDevolucion=fechaDevolucion;
     }
 
     public class_usuario(String id_Usuario, String nombre, int telefono, String correo, String direccion) {
