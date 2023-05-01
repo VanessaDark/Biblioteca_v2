@@ -31,7 +31,7 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_menu = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -55,8 +55,13 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         jLabel1.setText("Id");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
-        jButton1.setText("Menu");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 23, -1, -1));
+        btn_menu.setText("Menu");
+        btn_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 23, -1, -1));
 
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 196, -1, -1));
@@ -75,6 +80,11 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 170, 30));
 
         btn_tabla.setText("Mostrar datos");
+        btn_tabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tablaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 300, -1));
 
         btn_guardar.setText("Guardar");
@@ -86,10 +96,26 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, -1));
 
         btn_modificar.setText("Modificar");
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
 
         btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, -1, -1));
+
+        txt_idUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idUsuarioKeyTyped(evt);
+            }
+        });
         jPanel1.add(txt_idUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 70, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,7 +144,7 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         class_usuario usuario=new class_usuario(id, nombre, telefono, correo, direccion);
         contenedorUsuarios.add(usuario);
         
-        JOptionPane.showMessageDialog(null, "Usuario registrado");
+        JOptionPane.showMessageDialog(null, "Datos de usuario registrado");
         
         txt_idUsuario.setText("");
         txt_nombre.setText("");
@@ -129,6 +155,73 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void txt_idUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idUsuarioKeyTyped
+        // Busca los datos
+       int press=evt.getKeyChar();
+        if(press==10){
+            String idEncontrado=txt_idUsuario.getText().trim();
+            class_usuario usuario;
+            for(int i = 0; i < contenedorUsuarios.size(); i++){
+                usuario=(class_usuario)contenedorUsuarios.get(i);
+                if(idEncontrado.equalsIgnoreCase(usuario.getId_Usuario())){
+                    txt_nombre.setText(usuario.getNombre());
+                    txt_telefono.setText(Integer.toString(usuario.getTelefono()));
+                    txt_correo.setText(usuario.getCorreo());
+                    txt_direccion.setText(usuario.getDireccion()); 
+                    buscar=i;
+                    break;
+                    
+                }//Fin if
+                    
+            }//fin for
+            
+        }//Fin if
+    }//GEN-LAST:event_txt_idUsuarioKeyTyped
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        // Boton modificar
+        String id=txt_idUsuario.getText();
+        String nombre=txt_nombre.getText();
+        int telefono=Integer.parseInt(txt_telefono.getText());
+        String correo=txt_correo.getText();
+        String direccion=txt_direccion.getText();
+       
+        
+        class_usuario usuario=new class_usuario(id, nombre, telefono, correo, direccion);
+        contenedorUsuarios.add(usuario);
+        
+        JOptionPane.showMessageDialog(null, "Datos de usuario modificado");
+        
+        txt_idUsuario.setText("");
+        txt_nombre.setText("");
+        txt_telefono.setText("");
+        txt_correo.setText("");
+        txt_direccion.setText("");
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        // Boton eliminar
+         contenedorUsuarios.remove(buscar);
+        txt_idUsuario.setText("");
+        txt_nombre.setText("");
+        txt_telefono.setText("");
+        txt_correo.setText("");
+        txt_direccion.setText("");
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
+        // Boton menu
+        Menu abrir=new Menu();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_menuActionPerformed
+
+    private void btn_tablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tablaActionPerformed
+        // Boton tabla datos
+        csl_usuario abrir=new csl_usuario();
+        abrir.setVisible(true);
+    }//GEN-LAST:event_btn_tablaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,9 +261,9 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_menu;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_tabla;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -41,6 +41,38 @@ public class class_usuario extends class_libro{
         this.direccion = direccion;
     }
 
+    public String getId_Usuario() {
+        return id_Usuario;
+    }
+
+    public void setId_Usuario(String id_Usuario) {
+        this.id_Usuario = id_Usuario;
+    }
+
+    public String getId_prestamo() {
+        return id_prestamo;
+    }
+
+    public void setId_prestamo(String id_prestamo) {
+        this.id_prestamo = id_prestamo;
+    }
+
+    public String getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(String fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public String getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+
+    public void setFechaDevolucion(String fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
+    }
+
     
 
     public String getNombre() {

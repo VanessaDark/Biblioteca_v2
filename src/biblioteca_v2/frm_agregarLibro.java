@@ -4,9 +4,12 @@
  */
 package biblioteca_v2;
 
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.util.*;
+import java.util.Date;
 
 /**
  *
@@ -109,6 +112,11 @@ public class frm_agregarLibro extends javax.swing.JFrame {
 
         btn_tabla.setText("Mostrar datos");
         btn_tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_tabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tablaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 347, 34));
 
         btn_guardar.setText("Guardar");
@@ -195,6 +203,8 @@ public class frm_agregarLibro extends javax.swing.JFrame {
                     txt_autor.setText(libro.getAutor());
                     txt_editorial.setText(libro.getEditorial());
                     txt_edicion.setText(libro.getEdicion());
+                    ((JTextField)jdate_fecha.getDateEditor().getUiComponent()).setText(libro.getFecha());
+                    txt_cantidad.setText(Integer.toString(libro.getCantidad()));
                     buscar=i;
                     break;
                     
@@ -202,20 +212,18 @@ public class frm_agregarLibro extends javax.swing.JFrame {
                     
             }//fin for
             
-        }//Fin if
-        
-        
+        }//Fin if 
         
     }//GEN-LAST:event_txt_idLibroKeyTyped
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         // Boton modificar
-         String id=txt_idLibro.getText();
+        String id=txt_idLibro.getText();
         String libro=txt_libro.getText();
         String autor=txt_autor.getText();
         String editorial=txt_editorial.getText();
         String ediccion=txt_edicion.getText();
-         String fecha=((JTextField)jdate_fecha.getDateEditor().getUiComponent()).getText();
+        String fecha=((JTextField)jdate_fecha.getDateEditor().getUiComponent()).getText();
         int cantidad=Integer.parseInt(txt_cantidad.getText());
         
         
@@ -246,8 +254,16 @@ public class frm_agregarLibro extends javax.swing.JFrame {
 
     private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
         // Boton menu
-        
+        Menu abrir=new Menu();
+        abrir.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btn_menuActionPerformed
+
+    private void btn_tablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tablaActionPerformed
+        // Boton mostrar tabla
+        csl_libros abrir=new csl_libros();
+        abrir.setVisible(true);
+    }//GEN-LAST:event_btn_tablaActionPerformed
 
     /**
      * @param args the command line arguments

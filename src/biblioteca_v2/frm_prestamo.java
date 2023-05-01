@@ -84,11 +84,28 @@ public class frm_prestamo extends javax.swing.JFrame {
 
         jLabel3.setText("Fecha de devolucion");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, -1));
+
+        txt_idPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idPrestamoActionPerformed(evt);
+            }
+        });
+        txt_idPrestamo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idPrestamoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txt_idPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 80, 30));
         jPanel1.add(jdate_inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 170, -1));
         jPanel1.add(jdate_devolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 170, -1));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_IdUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_IdUsuarioKeyTyped(evt);
+            }
+        });
         jPanel2.add(txt_IdUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 80, -1));
 
         jLabel4.setText("id usuario");
@@ -125,6 +142,12 @@ public class frm_prestamo extends javax.swing.JFrame {
 
         jLabel14.setText("Autor");
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+
+        txt_idLibro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idLibroKeyTyped(evt);
+            }
+        });
         jPanel3.add(txt_idLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 80, -1));
         jPanel3.add(txt_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 160, -1));
         jPanel3.add(txt_autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 160, -1));
@@ -154,9 +177,19 @@ public class frm_prestamo extends javax.swing.JFrame {
         jPanel1.add(brn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 530, -1, -1));
 
         btn_modificar.setText("Modificar");
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, -1, -1));
 
         btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, -1, -1));
 
         jLabel15.setText("Prestamo de libros");
@@ -166,13 +199,11 @@ public class frm_prestamo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -219,6 +250,146 @@ public class frm_prestamo extends javax.swing.JFrame {
           
         
     }//GEN-LAST:event_brn_guardarActionPerformed
+
+    private void txt_IdUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdUsuarioKeyTyped
+        // Codigo para buscar los datos del usuario
+        int press=evt.getKeyChar();
+        if(press==10){
+            String idEncontrado=txt_IdUsuario.getText().trim();
+            class_usuario usuario;
+            for(int i = 0; i < frm_agregarUsuario.contenedorUsuarios.size(); i++){
+                usuario=(class_usuario)frm_agregarUsuario.contenedorUsuarios.get(i);
+                if(idEncontrado.equalsIgnoreCase(usuario.getId_Usuario())){
+                    txt_nombre.setText(usuario.getNombre());
+                    txt_telefono.setText(Integer.toString(usuario.getTelefono()));
+                    txt_correo.setText(usuario.getCorreo());
+                    txt_direccion.setText(usuario.getDireccion());
+                    buscar=i;
+                    break;
+                    
+                }//Fin if
+                    
+            }//fin for
+            
+        }//Fin if
+    }//GEN-LAST:event_txt_IdUsuarioKeyTyped
+
+    private void txt_idLibroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idLibroKeyTyped
+        // Codigo buscar los datos del libro
+        int press=evt.getKeyChar();
+        if(press==10){
+            String idEncontrado=txt_idLibro.getText().trim();
+            class_libro libro;
+            for(int i = 0; i < frm_agregarLibro.contenedorLibros.size(); i++){
+                libro=(class_libro)frm_agregarLibro.contenedorLibros.get(i);
+                if(idEncontrado.equalsIgnoreCase(libro.getId_libro())){
+                    txt_libro.setText(libro.getLibro());
+                    txt_autor.setText(libro.getLibro());
+                    txt_cantidad.setText(Integer.toString(libro.getCantidad()));
+                    buscar=i;
+                    break;
+                    
+                }//Fin if
+                    
+            }//fin for
+            
+        }//Fin if
+    }//GEN-LAST:event_txt_idLibroKeyTyped
+
+    private void txt_idPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idPrestamoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txt_idPrestamoActionPerformed
+
+    private void txt_idPrestamoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idPrestamoKeyTyped
+        // Codigo para buscar el prestamo
+        int press=evt.getKeyChar();
+        if(press==10){
+            String idEncontrado=txt_idPrestamo.getText().trim();
+            class_usuario usuario;
+            for(int i = 0; i < contenedorPrestamos.size(); i++){
+                usuario=(class_usuario)contenedorPrestamos.get(i);
+                if(idEncontrado.equalsIgnoreCase(usuario.getId_Usuario())){
+                    ((JTextField)jdate_inicio.getDateEditor().getUiComponent()).setText(usuario.getFechaInicio());
+                    ((JTextField)jdate_devolucion.getDateEditor().getUiComponent()).setText(usuario.getFechaDevolucion());
+                    
+                    txt_IdUsuario.setText(usuario.getId_Usuario());
+                    txt_nombre.setText(usuario.getNombre());
+                    txt_telefono.setText(Integer.toString(usuario.getTelefono()));
+                    txt_correo.setText(usuario.getCorreo());
+                    txt_direccion.setText(usuario.getDireccion());
+                    
+                    txt_idLibro.setText(usuario.getId_libro());
+                    txt_libro.setText(usuario.getLibro());
+                    txt_autor.setText(usuario.getLibro());
+                    txt_cantidad.setText(Integer.toString(usuario.getCantidad()));
+                    
+                    buscar=i;
+                    break;
+                    
+                }//Fin if
+                    
+            }//fin for
+            
+        }//Fin if
+    }//GEN-LAST:event_txt_idPrestamoKeyTyped
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        // Boton modificar
+        String idPrestamo = txt_idPrestamo.getText();
+       String fechaInicio=((JTextField)jdate_inicio.getDateEditor().getUiComponent()).getText();
+       String fechaDevolucion=((JTextField)jdate_devolucion.getDateEditor().getUiComponent()).getText();
+       
+       String idUsuario= txt_IdUsuario.getText();
+       String nombre=txt_nombre.getText();
+       int telefono=Integer.parseInt(txt_telefono.getText());
+       String correo=txt_correo.getText();
+       String direccion=txt_direccion.getText();
+       
+       String IdLibro=txt_idLibro.getText();
+       String libro=txt_libro.getText();
+       String autor=txt_autor.getText();
+       
+       class_usuario prestamoUsuario=new class_usuario(IdLibro, libro, autor, idUsuario, nombre, telefono, correo, direccion, idPrestamo, fechaInicio, fechaDevolucion);
+       contenedorPrestamos.add(prestamoUsuario);
+       
+       //Al registrar los datos los campos se vacian
+       //Datos del prestamos
+       txt_idPrestamo.setText("");
+       jdate_inicio.setCalendar(null);
+       jdate_devolucion.setCalendar(null);
+       //campos del usuario
+       txt_IdUsuario.setText("");
+       txt_nombre.setText("");
+       txt_telefono.setText("");
+       txt_correo.setText("");
+       txt_direccion.setText("");
+       //campos del libro
+       txt_idLibro.setText("");
+       txt_libro.setText("");
+       txt_autor.setText("");
+       txt_cantidad.setText("");
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        // Boton eliminar registro
+         contenedorPrestamos.remove(buscar);
+         //Al buscar los datos los campos se vaciaran
+       txt_idPrestamo.setText("");
+       jdate_inicio.setCalendar(null);
+       jdate_devolucion.setCalendar(null);
+       //campos del usuario
+       txt_IdUsuario.setText("");
+       txt_nombre.setText("");
+       txt_telefono.setText("");
+       txt_correo.setText("");
+       txt_direccion.setText("");
+       //campos del libro
+       txt_idLibro.setText("");
+       txt_libro.setText("");
+       txt_autor.setText("");
+       txt_cantidad.setText("");
+    }//GEN-LAST:event_btn_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
