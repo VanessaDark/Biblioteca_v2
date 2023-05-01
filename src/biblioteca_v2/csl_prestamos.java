@@ -4,7 +4,9 @@
  */
 package biblioteca_v2;
 
-import java.util.LinkedList;
+import javax.swing.table.DefaultTableModel;
+
+
 
 /**
  *
@@ -12,11 +14,43 @@ import java.util.LinkedList;
  */
 public class csl_prestamos extends javax.swing.JFrame {
 
-    public static LinkedList contenedorUsuarios = new LinkedList();
-    public int buscar;
+    private DefaultTableModel modelo;
+    int contador=0;
     
     public csl_prestamos() {
         initComponents();
+        CargarInterfaz();
+        CargarDatos();
+    }
+    
+     public void CargarInterfaz(){
+        String datos[][]={};
+        String columna[]={"ID","Fecha de prestamo","Devolucion","ID usuario","Nombre","Telefono","Correo","Direccion","Id libro","Libro","Autor"};
+        modelo=new DefaultTableModel(datos,columna);
+        tb_prestamos.setModel(modelo);
+    }
+    
+    public void CargarDatos(){
+        class_usuario usuario;
+        for(int i=0; i<frm_prestamo.contenedorPrestamos.size(); i++){
+            usuario=(class_usuario)frm_prestamo.contenedorPrestamos.get(i);
+            modelo.insertRow(contador,new Object[]{});
+            modelo.setValueAt(usuario.getId_prestamo(),contador, 0);
+            modelo.setValueAt(usuario.getFechaInicio(),contador, 1);
+            modelo.setValueAt(usuario.getFechaDevolucion(),contador, 2);
+              
+            modelo.setValueAt(usuario.getId_Usuario(),contador, 3);
+            modelo.setValueAt(usuario.getNombre(),contador, 4);
+            modelo.setValueAt(usuario.getTelefono(),contador, 5);
+            modelo.setValueAt(usuario.getCorreo(),contador, 6);
+            modelo.setValueAt(usuario.getDireccion(),contador, 7);
+                
+            modelo.setValueAt(usuario.getId_libro(),contador, 8);
+            modelo.setValueAt(usuario.getLibro(),contador, 9);
+            modelo.setValueAt(usuario.getAutor(),contador, 10);
+
+            
+        }
     }
 
     /**
@@ -62,17 +96,21 @@ public class csl_prestamos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tb_prestamos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 677, 357));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 640, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
