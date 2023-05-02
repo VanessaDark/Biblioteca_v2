@@ -60,7 +60,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 150, 120));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/floni.jpg"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 250, 540));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 260, 540));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 540));
 
@@ -201,7 +201,7 @@ public class Login extends javax.swing.JFrame {
 
     private void loginBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseEntered
         // TODO add your handling code here:
-            loginBtn.setBackground(new Color(29,164,205));
+        loginBtn.setBackground(new Color(29,164,205));
     }//GEN-LAST:event_loginBtnMouseEntered
 
     private void loginBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseExited
@@ -232,7 +232,7 @@ public class Login extends javax.swing.JFrame {
         String user=this.userTxt.getText();
         String pass= this.passTxt.getText();
         
-        if(user.endsWith("ParkCar") && pass.endsWith("12345")){
+        if(user.endsWith("BiblioTecnm") && pass.endsWith("12345")){
             JOptionPane.showMessageDialog(null,"Bienvenido ");
             Menu abrir=new Menu();
             abrir.setVisible(true);//Muestra el menu

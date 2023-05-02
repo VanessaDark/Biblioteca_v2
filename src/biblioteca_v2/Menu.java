@@ -4,6 +4,7 @@
  */
 package biblioteca_v2;
 
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.Timer;
@@ -19,6 +20,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        this.setLocationRelativeTo(null);
         tiempo();
     }
     
@@ -49,14 +51,6 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btn_libro = new javax.swing.JButton();
-        btn_TablaLibros = new javax.swing.JButton();
-        btn_usuario = new javax.swing.JButton();
-        btn_tablaUsuarios = new javax.swing.JButton();
-        btn_prestamo = new javax.swing.JButton();
-        btn_tablaPrestamo = new javax.swing.JButton();
-        btn_devoluciones = new javax.swing.JButton();
-        btn_tablaDevoluciones = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -64,98 +58,279 @@ public class Menu extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         lb_hora = new javax.swing.JLabel();
         lb_fecha = new javax.swing.JLabel();
+        btn_buscarlibro = new javax.swing.JButton();
+        btn_RegistrarLibro = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        btn_RegistroUsuario = new javax.swing.JButton();
+        btn_datosdevoluciones = new javax.swing.JButton();
+        btn_agregarUsuario = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        btn_registroPrestamos = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        btn_devoluciones = new javax.swing.JButton();
+        btn_prestamos = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_libro.setText("Registrar libro");
-        btn_libro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_libroActionPerformed(evt);
+        jLabel1.setFont(new java.awt.Font("Harlow Solid Italic", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 204, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Menu");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 140, 50));
+
+        jPanel3.setBackground(new java.awt.Color(117, 235, 180));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logTec1.jpg.png"))); // NOI18N
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 200, 120));
+
+        jLabel3.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Hora");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 60, 40));
+
+        jLabel4.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Fecha");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, -1, -1));
+
+        lb_hora.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        lb_hora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_hora.setText("hh:mm:ss pm");
+        jPanel3.add(lb_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
+
+        lb_fecha.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        lb_fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_fecha.setText("dd/mm/yyyy");
+        jPanel3.add(lb_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 250, 620));
+
+        btn_buscarlibro.setBackground(new java.awt.Color(117, 235, 121));
+        btn_buscarlibro.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        btn_buscarlibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscarLibr.png"))); // NOI18N
+        btn_buscarlibro.setText("Libros registrados");
+        btn_buscarlibro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_buscarlibro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_buscarlibro.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btn_buscarlibro.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btn_buscarlibro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_buscarlibroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_buscarlibroMouseExited(evt);
             }
         });
-        jPanel1.add(btn_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 120, 50));
-
-        btn_TablaLibros.setText("Libros registrados");
-        btn_TablaLibros.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscarlibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_TablaLibrosActionPerformed(evt);
+                btn_buscarlibroActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_TablaLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 130, 50));
+        jPanel1.add(btn_buscarlibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 160, 90));
 
-        btn_usuario.setText("Registros de usuarios");
-        btn_usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_usuarioActionPerformed(evt);
+        btn_RegistrarLibro.setBackground(new java.awt.Color(117, 235, 121));
+        btn_RegistrarLibro.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        btn_RegistrarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/librosAgr.png"))); // NOI18N
+        btn_RegistrarLibro.setText("Agregar");
+        btn_RegistrarLibro.setToolTipText("");
+        btn_RegistrarLibro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_RegistrarLibro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_RegistrarLibro.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btn_RegistrarLibro.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btn_RegistrarLibro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_RegistrarLibroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_RegistrarLibroMouseExited(evt);
             }
         });
-        jPanel1.add(btn_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 120, 50));
-
-        btn_tablaUsuarios.setText("Usuarios registrados");
-        btn_tablaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        btn_RegistrarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_tablaUsuariosActionPerformed(evt);
+                btn_RegistrarLibroActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_tablaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 130, 50));
+        jPanel1.add(btn_RegistrarLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 160, 90));
 
-        btn_prestamo.setText("Prestamos");
-        btn_prestamo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_prestamoActionPerformed(evt);
+        jSeparator1.setBackground(new java.awt.Color(204, 255, 204));
+        jSeparator1.setForeground(new java.awt.Color(204, 255, 204));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 400, 10));
+
+        btn_RegistroUsuario.setBackground(new java.awt.Color(117, 235, 121));
+        btn_RegistroUsuario.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        btn_RegistroUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/RegisUser.png"))); // NOI18N
+        btn_RegistroUsuario.setText("Usuarios agregados");
+        btn_RegistroUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_RegistroUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_RegistroUsuario.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btn_RegistroUsuario.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btn_RegistroUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_RegistroUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_RegistroUsuarioMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_RegistroUsuarioMouseReleased(evt);
             }
         });
-        jPanel1.add(btn_prestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 120, 60));
-
-        btn_tablaPrestamo.setText("Prestamos registrados");
-        btn_tablaPrestamo.addActionListener(new java.awt.event.ActionListener() {
+        btn_RegistroUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_tablaPrestamoActionPerformed(evt);
+                btn_RegistroUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_tablaPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 130, 60));
+        jPanel1.add(btn_RegistroUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 160, 90));
 
+        btn_datosdevoluciones.setBackground(new java.awt.Color(117, 235, 121));
+        btn_datosdevoluciones.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        btn_datosdevoluciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/RegsiDevol.png"))); // NOI18N
+        btn_datosdevoluciones.setText("Datos devoluciones");
+        btn_datosdevoluciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_datosdevoluciones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_datosdevoluciones.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btn_datosdevoluciones.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btn_datosdevoluciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_datosdevolucionesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_datosdevolucionesMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_datosdevolucionesMouseReleased(evt);
+            }
+        });
+        btn_datosdevoluciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_datosdevolucionesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_datosdevoluciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 480, 160, 90));
+
+        btn_agregarUsuario.setBackground(new java.awt.Color(117, 235, 121));
+        btn_agregarUsuario.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        btn_agregarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/AddUser.png"))); // NOI18N
+        btn_agregarUsuario.setText("Agregar usuario");
+        btn_agregarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_agregarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_agregarUsuario.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btn_agregarUsuario.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btn_agregarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_agregarUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_agregarUsuarioMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_agregarUsuarioMouseReleased(evt);
+            }
+        });
+        btn_agregarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_agregarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 160, 90));
+
+        jSeparator2.setBackground(new java.awt.Color(204, 255, 204));
+        jSeparator2.setForeground(new java.awt.Color(204, 255, 204));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 400, 10));
+
+        btn_registroPrestamos.setBackground(new java.awt.Color(117, 235, 121));
+        btn_registroPrestamos.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        btn_registroPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/searchPrestamo.png"))); // NOI18N
+        btn_registroPrestamos.setText("Registros prestamos");
+        btn_registroPrestamos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_registroPrestamos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_registroPrestamos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btn_registroPrestamos.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btn_registroPrestamos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_registroPrestamosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_registroPrestamosMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_registroPrestamosMouseReleased(evt);
+            }
+        });
+        btn_registroPrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registroPrestamosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_registroPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 160, 90));
+
+        jSeparator3.setBackground(new java.awt.Color(204, 255, 204));
+        jSeparator3.setForeground(new java.awt.Color(204, 255, 204));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 400, 10));
+
+        btn_devoluciones.setBackground(new java.awt.Color(117, 235, 121));
+        btn_devoluciones.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        btn_devoluciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/devolLibr1.png"))); // NOI18N
         btn_devoluciones.setText("Devoluciones");
+        btn_devoluciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_devoluciones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_devoluciones.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btn_devoluciones.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btn_devoluciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_devolucionesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_devolucionesMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_devolucionesMouseReleased(evt);
+            }
+        });
         btn_devoluciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_devolucionesActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_devoluciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 120, 50));
+        jPanel1.add(btn_devoluciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 160, 90));
 
-        btn_tablaDevoluciones.setText("Registro devoluciones");
-        btn_tablaDevoluciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_tablaDevolucionesActionPerformed(evt);
+        btn_prestamos.setBackground(new java.awt.Color(117, 235, 121));
+        btn_prestamos.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
+        btn_prestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/prestamo.png"))); // NOI18N
+        btn_prestamos.setText("Prestamos");
+        btn_prestamos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_prestamos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_prestamos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btn_prestamos.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btn_prestamos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_prestamosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_prestamosMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_prestamosMouseReleased(evt);
             }
         });
-        jPanel1.add(btn_tablaDevoluciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 130, 50));
+        btn_prestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prestamosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_prestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 160, 90));
 
-        jLabel1.setText("Menu");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 50, 30));
-
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logTec.jpg"))); // NOI18N
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 200, 120));
-
-        jLabel3.setText("Hora");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 60, 40));
-
-        jLabel4.setText("Fecha");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, -1, -1));
-
-        lb_hora.setText("hh:mm:ss");
-        jPanel3.add(lb_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
-
-        lb_fecha.setText("dd/mm/yyyy");
-        jPanel3.add(lb_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, -1, -1));
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 250, 560));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fmenu1.jpg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 620));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,32 +343,124 @@ public class Menu extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_libroActionPerformed
+    private void btn_buscarlibroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarlibroMouseEntered
+        // TODO add your handling code here:
+        btn_buscarlibro.setBackground(new Color(172, 235, 117));
+    }//GEN-LAST:event_btn_buscarlibroMouseEntered
+
+    private void btn_buscarlibroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarlibroMouseExited
+        // TODO add your handling code here:
+         btn_buscarlibro.setBackground(new Color(117, 235, 121));
+    }//GEN-LAST:event_btn_buscarlibroMouseExited
+
+    private void btn_buscarlibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarlibroActionPerformed
+        // TODO add your handling code here:
+        csl_libros abrir=new csl_libros();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_buscarlibroActionPerformed
+
+    private void btn_RegistrarLibroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_RegistrarLibroMouseEntered
+        // TODO add your handling code here:
+        btn_RegistrarLibro.setBackground(new Color(172, 235, 117));
+    }//GEN-LAST:event_btn_RegistrarLibroMouseEntered
+
+    private void btn_RegistrarLibroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_RegistrarLibroMouseExited
+        // TODO add your handling code here:
+         btn_RegistrarLibro.setBackground(new Color(117, 235, 121));
+    }//GEN-LAST:event_btn_RegistrarLibroMouseExited
+
+    private void btn_RegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarLibroActionPerformed
+        // TODO add your handling code here:
         frm_agregarLibro abrir=new frm_agregarLibro();
         abrir.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btn_libroActionPerformed
+    }//GEN-LAST:event_btn_RegistrarLibroActionPerformed
 
-    private void btn_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_usuarioActionPerformed
+    private void btn_agregarUsuarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregarUsuarioMouseReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btn_agregarUsuarioMouseReleased
+
+    private void btn_agregarUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregarUsuarioMouseExited
+        // TODO add your handling code here:
+         btn_agregarUsuario.setBackground(new Color(117, 235, 121));
+    }//GEN-LAST:event_btn_agregarUsuarioMouseExited
+
+    private void btn_agregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarUsuarioActionPerformed
         // TODO add your handling code here:
         frm_agregarUsuario abrir=new frm_agregarUsuario();
         abrir.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btn_usuarioActionPerformed
+    }//GEN-LAST:event_btn_agregarUsuarioActionPerformed
 
-    private void btn_prestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamoActionPerformed
+    private void btn_RegistroUsuarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_RegistroUsuarioMouseReleased
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_btn_RegistroUsuarioMouseReleased
+
+    private void btn_RegistroUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_RegistroUsuarioMouseExited
+        // TODO add your handling code here:
+        btn_RegistroUsuario.setBackground(new Color(117, 235, 121));
+    }//GEN-LAST:event_btn_RegistroUsuarioMouseExited
+
+    private void btn_RegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistroUsuarioActionPerformed
+        // TODO add your handling code here:
+        csl_usuario abrir=new csl_usuario();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_RegistroUsuarioActionPerformed
+
+    private void btn_prestamosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prestamosMouseReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btn_prestamosMouseReleased
+
+    private void btn_prestamosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prestamosMouseExited
+        // TODO add your handling code here:
+        btn_prestamos.setBackground(new Color(117, 235, 121));
+    }//GEN-LAST:event_btn_prestamosMouseExited
+
+    private void btn_prestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamosActionPerformed
         // TODO add your handling code here:
         frm_prestamo abrir=new frm_prestamo();
         abrir.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btn_prestamoActionPerformed
+    }//GEN-LAST:event_btn_prestamosActionPerformed
+
+    private void btn_registroPrestamosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registroPrestamosMouseReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btn_registroPrestamosMouseReleased
+
+    private void btn_registroPrestamosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registroPrestamosMouseExited
+        // TODO add your handling code here:
+        btn_registroPrestamos.setBackground(new Color(117, 235, 121));
+    }//GEN-LAST:event_btn_registroPrestamosMouseExited
+
+    private void btn_registroPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registroPrestamosActionPerformed
+        // TODO add your handling code here:
+        csl_prestamos abrir=new csl_prestamos();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_registroPrestamosActionPerformed
+
+    private void btn_devolucionesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_devolucionesMouseReleased
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_btn_devolucionesMouseReleased
+
+    private void btn_devolucionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_devolucionesMouseExited
+        // TODO add your handling code here:
+         btn_devoluciones.setBackground(new Color(117, 235, 121));
+    }//GEN-LAST:event_btn_devolucionesMouseExited
 
     private void btn_devolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_devolucionesActionPerformed
         // TODO add your handling code here:
@@ -202,33 +469,52 @@ public class Menu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_devolucionesActionPerformed
 
-    private void btn_TablaLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TablaLibrosActionPerformed
+    private void btn_datosdevolucionesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_datosdevolucionesMouseReleased
         // TODO add your handling code here:
-        csl_libros abrir=new csl_libros();
-        abrir.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btn_TablaLibrosActionPerformed
+      
+    }//GEN-LAST:event_btn_datosdevolucionesMouseReleased
 
-    private void btn_tablaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tablaUsuariosActionPerformed
+    private void btn_datosdevolucionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_datosdevolucionesMouseExited
         // TODO add your handling code here:
-        csl_usuario abrir=new csl_usuario();
-        abrir.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btn_tablaUsuariosActionPerformed
+         btn_datosdevoluciones.setBackground(new Color(117, 235, 121));
+    }//GEN-LAST:event_btn_datosdevolucionesMouseExited
 
-    private void btn_tablaPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tablaPrestamoActionPerformed
-        // TODO add your handling code here:
-        csl_prestamos abrir=new csl_prestamos();
-        abrir.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btn_tablaPrestamoActionPerformed
-
-    private void btn_tablaDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tablaDevolucionesActionPerformed
+    private void btn_datosdevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_datosdevolucionesActionPerformed
         // TODO add your handling code here:
         csl_devoluciones abrir=new csl_devoluciones();
         abrir.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btn_tablaDevolucionesActionPerformed
+    }//GEN-LAST:event_btn_datosdevolucionesActionPerformed
+
+    private void btn_agregarUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregarUsuarioMouseEntered
+        // TODO add your handling code here:
+        btn_agregarUsuario.setBackground(new Color(172, 235, 117));
+    }//GEN-LAST:event_btn_agregarUsuarioMouseEntered
+
+    private void btn_RegistroUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_RegistroUsuarioMouseEntered
+        // TODO add your handling code here:
+        btn_RegistroUsuario.setBackground(new Color(172, 235, 117));
+    }//GEN-LAST:event_btn_RegistroUsuarioMouseEntered
+
+    private void btn_prestamosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_prestamosMouseEntered
+        // TODO add your handling code here:
+        btn_prestamos.setBackground(new Color(172, 235, 117));
+    }//GEN-LAST:event_btn_prestamosMouseEntered
+
+    private void btn_registroPrestamosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registroPrestamosMouseEntered
+        // TODO add your handling code here:
+        btn_registroPrestamos.setBackground(new Color(172, 235, 117));
+    }//GEN-LAST:event_btn_registroPrestamosMouseEntered
+
+    private void btn_devolucionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_devolucionesMouseEntered
+        // TODO add your handling code here:
+        btn_devoluciones.setBackground(new Color(172, 235, 117));
+    }//GEN-LAST:event_btn_devolucionesMouseEntered
+
+    private void btn_datosdevolucionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_datosdevolucionesMouseEntered
+        // TODO add your handling code here:
+        btn_datosdevoluciones.setBackground(new Color(172, 235, 117));
+    }//GEN-LAST:event_btn_datosdevolucionesMouseEntered
 
     /**
      * @param args the command line arguments
@@ -266,20 +552,24 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_TablaLibros;
+    private javax.swing.JButton btn_RegistrarLibro;
+    private javax.swing.JButton btn_RegistroUsuario;
+    private javax.swing.JButton btn_agregarUsuario;
+    private javax.swing.JButton btn_buscarlibro;
+    private javax.swing.JButton btn_datosdevoluciones;
     private javax.swing.JButton btn_devoluciones;
-    private javax.swing.JButton btn_libro;
-    private javax.swing.JButton btn_prestamo;
-    private javax.swing.JButton btn_tablaDevoluciones;
-    private javax.swing.JButton btn_tablaPrestamo;
-    private javax.swing.JButton btn_tablaUsuarios;
-    private javax.swing.JButton btn_usuario;
+    private javax.swing.JButton btn_prestamos;
+    private javax.swing.JButton btn_registroPrestamos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lb_fecha;
     private javax.swing.JLabel lb_hora;
     // End of variables declaration//GEN-END:variables
