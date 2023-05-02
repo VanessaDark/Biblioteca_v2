@@ -96,6 +96,8 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         btn_eliminar = new javax.swing.JButton();
         txt_idUsuario = new javax.swing.JTextField();
         validCorreo = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Formulario agregar Usuario");
@@ -103,26 +105,41 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         jLabel1.setText("Id");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
+        btn_menu.setBackground(new java.awt.Color(52, 232, 148));
         btn_menu.setText("Menu");
+        btn_menu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_menuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_menuMouseExited(evt);
+            }
+        });
         btn_menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_menuActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 23, -1, -1));
+        jPanel1.add(btn_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 23, 80, 30));
 
+        jLabel2.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 196, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         jLabel3.setText("Telefono");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         jLabel4.setText("Correo");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         jLabel5.setText("Direccion");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
 
@@ -162,37 +179,77 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 170, 30));
 
+        btn_tabla.setBackground(new java.awt.Color(52, 232, 148));
         btn_tabla.setText("Mostrar datos");
+        btn_tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_tablaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_tablaMouseExited(evt);
+            }
+        });
         btn_tabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_tablaActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 300, -1));
+        jPanel1.add(btn_tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 300, 30));
 
+        btn_guardar.setBackground(new java.awt.Color(52, 232, 148));
         btn_guardar.setText("Guardar");
+        btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_guardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_guardarMouseExited(evt);
+            }
+        });
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, -1));
+        jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 80, 30));
 
+        btn_modificar.setBackground(new java.awt.Color(52, 232, 148));
         btn_modificar.setText("Modificar");
+        btn_modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_modificarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_modificarMouseExited(evt);
+            }
+        });
         btn_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_modificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
+        jPanel1.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, -1, 30));
 
+        btn_eliminar.setBackground(new java.awt.Color(52, 232, 148));
         btn_eliminar.setText("Eliminar");
+        btn_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_eliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_eliminarMouseExited(evt);
+            }
+        });
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, -1, -1));
+        jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, -1, 30));
 
         txt_idUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -204,20 +261,28 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(txt_idUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 70, 30));
 
-        validCorreo.setText("jLabel6");
-        jPanel1.add(validCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 90, -1));
+        validCorreo.setForeground(new java.awt.Color(153, 0, 0));
+        jPanel1.add(validCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 196, 90, 20));
+
+        jLabel7.setFont(new java.awt.Font("MS PGothic", 1, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregarusr1.png"))); // NOI18N
+        jLabel7.setText("Registrar usuario");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 290, 130));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fusr.jpg"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 490));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -357,6 +422,56 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_telefonoKeyTyped
 
+    private void btn_guardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarMouseEntered
+        // TODO add your handling code here:
+        btn_guardar.setBackground(new Color(52, 232, 148));
+    }//GEN-LAST:event_btn_guardarMouseEntered
+
+    private void btn_guardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarMouseExited
+        // TODO add your handling code here:
+        btn_guardar.setBackground(new Color(52, 226, 232));
+    }//GEN-LAST:event_btn_guardarMouseExited
+
+    private void btn_modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modificarMouseEntered
+        // TODO add your handling code here:
+        btn_modificar.setBackground(new Color(52, 232, 148));
+    }//GEN-LAST:event_btn_modificarMouseEntered
+
+    private void btn_modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modificarMouseExited
+        // TODO add your handling code here:
+         btn_modificar.setBackground(new Color(52, 226, 232));
+    }//GEN-LAST:event_btn_modificarMouseExited
+
+    private void btn_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseEntered
+        // TODO add your handling code here:
+        btn_eliminar.setBackground(new Color(52, 232, 148));
+    }//GEN-LAST:event_btn_eliminarMouseEntered
+
+    private void btn_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseExited
+        // TODO add your handling code here:
+        btn_eliminar.setBackground(new Color(52, 226, 232));
+    }//GEN-LAST:event_btn_eliminarMouseExited
+
+    private void btn_tablaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tablaMouseEntered
+        // TODO add your handling code here:
+         btn_tabla.setBackground(new Color(52, 232, 148));
+    }//GEN-LAST:event_btn_tablaMouseEntered
+
+    private void btn_tablaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tablaMouseExited
+        // TODO add your handling code here:
+        btn_tabla.setBackground(new Color(52, 226, 232));
+    }//GEN-LAST:event_btn_tablaMouseExited
+
+    private void btn_menuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menuMouseEntered
+        // TODO add your handling code here:
+        btn_menu.setBackground(new Color(52, 232, 148));
+    }//GEN-LAST:event_btn_menuMouseEntered
+
+    private void btn_menuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menuMouseExited
+        // TODO add your handling code here:
+        btn_menu.setBackground(new Color(52, 226, 232));
+    }//GEN-LAST:event_btn_menuMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -403,6 +518,8 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_direccion;

@@ -4,6 +4,7 @@
  */
 package biblioteca_v2;
 
+import java.awt.Color;
 import java.util.LinkedList;
 import javax.swing.JTextField;
 
@@ -30,7 +31,7 @@ public class frm_prestamo extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btn_menu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -62,7 +63,7 @@ public class frm_prestamo extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btn_tablaPrestamos = new javax.swing.JButton();
-        brn_guardar = new javax.swing.JButton();
+        btn_guardar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
@@ -70,25 +71,37 @@ public class frm_prestamo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Prestamo de libros");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(155, 249, 205));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Menu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        btn_menu.setBackground(new java.awt.Color(205, 155, 249));
+        btn_menu.setText("Menu");
+        btn_menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_menuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_menuMouseExited(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        btn_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, 40));
 
+        jLabel1.setFont(new java.awt.Font("Microsoft Tai Le", 0, 14)); // NOI18N
         jLabel1.setText("Id prestamo");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
-        jLabel2.setText("fecha de inicio");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Microsoft Tai Le", 0, 14)); // NOI18N
+        jLabel2.setText("Fecha de inicio");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Microsoft Tai Le", 0, 14)); // NOI18N
         jLabel3.setText("Fecha de devolucion");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, -1, -1));
 
         txt_idPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,9 +114,10 @@ public class frm_prestamo extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txt_idPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 80, 30));
-        jPanel1.add(jdate_inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 170, -1));
-        jPanel1.add(jdate_devolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 170, -1));
+        jPanel1.add(jdate_inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 170, -1));
+        jPanel1.add(jdate_devolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 170, -1));
 
+        jPanel2.setBackground(new java.awt.Color(131, 187, 251));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_IdUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -113,19 +127,24 @@ public class frm_prestamo extends javax.swing.JFrame {
         });
         jPanel2.add(txt_IdUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 80, -1));
 
+        jLabel4.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         jLabel4.setText("id usuario");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         jLabel6.setText("Nombre");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
         jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 160, -1));
 
+        jLabel9.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         jLabel9.setText("Telefono");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         jLabel10.setText("Correo");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
+        jLabel11.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         jLabel11.setText("Direccion");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
         jPanel2.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 160, -1));
@@ -134,17 +153,21 @@ public class frm_prestamo extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 360, 250));
 
+        jPanel3.setBackground(new java.awt.Color(135, 131, 251));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setText("Id libro");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, -1, -1));
 
+        jLabel12.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         jLabel12.setText("Id libro");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
+        jLabel13.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         jLabel13.setText("Libro");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 40, -1));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 60, -1));
 
+        jLabel14.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         jLabel14.setText("Autor");
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
@@ -157,48 +180,91 @@ public class frm_prestamo extends javax.swing.JFrame {
         jPanel3.add(txt_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 160, -1));
         jPanel3.add(txt_autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 160, -1));
 
+        jLabel16.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         jLabel16.setText("Cantidad");
         jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
         jPanel3.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 160, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 320, 250));
 
+        jLabel7.setFont(new java.awt.Font("NSimSun", 0, 18)); // NOI18N
         jLabel7.setText("Datos de usuario");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("NSimSun", 0, 18)); // NOI18N
         jLabel8.setText("Datos del libro");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, -1, -1));
+
+        jSeparator1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 690, 20));
 
+        btn_tablaPrestamos.setBackground(new java.awt.Color(205, 155, 249));
         btn_tablaPrestamos.setText("Mostrar prestamos");
-        jPanel1.add(btn_tablaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 570, 320, -1));
-
-        brn_guardar.setText("Guardar");
-        brn_guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brn_guardarActionPerformed(evt);
+        btn_tablaPrestamos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_tablaPrestamosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_tablaPrestamosMouseExited(evt);
             }
         });
-        jPanel1.add(brn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 530, -1, -1));
+        jPanel1.add(btn_tablaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 570, 330, 30));
 
+        btn_guardar.setBackground(new java.awt.Color(205, 155, 249));
+        btn_guardar.setText("Guardar");
+        btn_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_guardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_guardarMouseExited(evt);
+            }
+        });
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 530, 80, 30));
+
+        btn_modificar.setBackground(new java.awt.Color(205, 155, 249));
         btn_modificar.setText("Modificar");
+        btn_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_modificarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_modificarMouseExited(evt);
+            }
+        });
         btn_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_modificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, -1, -1));
+        jPanel1.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 530, 90, 30));
 
+        btn_eliminar.setBackground(new java.awt.Color(205, 155, 249));
         btn_eliminar.setText("Eliminar");
+        btn_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_eliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_eliminarMouseExited(evt);
+            }
+        });
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, -1, -1));
+        jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 530, 80, 30));
 
+        jLabel15.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Prestamo de libros");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 26, 140, 30));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 360, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,7 +282,7 @@ public class frm_prestamo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void brn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brn_guardarActionPerformed
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         // Boton guardar
        String idPrestamo = txt_idPrestamo.getText();
        String fechaInicio=((JTextField)jdate_inicio.getDateEditor().getUiComponent()).getText();
@@ -254,7 +320,7 @@ public class frm_prestamo extends javax.swing.JFrame {
        txt_cantidad.setText("");
           
         
-    }//GEN-LAST:event_brn_guardarActionPerformed
+    }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_IdUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdUsuarioKeyTyped
         // Codigo para buscar los datos del usuario
@@ -396,12 +462,62 @@ public class frm_prestamo extends javax.swing.JFrame {
        txt_cantidad.setText("");
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
         // TODO add your handling code here:
         Menu abrir=new Menu();
         abrir.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_menuActionPerformed
+
+    private void btn_menuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menuMouseEntered
+        // TODO add your handling code here:
+        btn_menu.setBackground(new Color(249, 155, 246));
+    }//GEN-LAST:event_btn_menuMouseEntered
+
+    private void btn_menuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menuMouseExited
+        // TODO add your handling code here:
+         btn_menu.setBackground(new Color(205, 155, 249));
+    }//GEN-LAST:event_btn_menuMouseExited
+
+    private void btn_guardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarMouseEntered
+        // TODO add your handling code here:
+         btn_guardar.setBackground(new Color(249, 155, 246));
+    }//GEN-LAST:event_btn_guardarMouseEntered
+
+    private void btn_guardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarMouseExited
+        // TODO add your handling code here:
+         btn_guardar.setBackground(new Color(205, 155, 249));
+    }//GEN-LAST:event_btn_guardarMouseExited
+
+    private void btn_modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modificarMouseEntered
+        // TODO add your handling code here:
+        btn_modificar.setBackground(new Color(249, 155, 246));
+    }//GEN-LAST:event_btn_modificarMouseEntered
+
+    private void btn_modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modificarMouseExited
+        // TODO add your handling code here:
+        btn_modificar.setBackground(new Color(205, 155, 249));
+    }//GEN-LAST:event_btn_modificarMouseExited
+
+    private void btn_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseEntered
+        // TODO add your handling code here:
+        btn_eliminar.setBackground(new Color(249, 155, 246));
+    }//GEN-LAST:event_btn_eliminarMouseEntered
+
+    private void btn_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseExited
+        // TODO add your handling code here:
+        btn_eliminar.setBackground(new Color(205, 155, 249));
+    }//GEN-LAST:event_btn_eliminarMouseExited
+
+    private void btn_tablaPrestamosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tablaPrestamosMouseEntered
+        // TODO add your handling code here:
+        btn_tablaPrestamos.setBackground(new Color(249, 155, 246));
+    }//GEN-LAST:event_btn_tablaPrestamosMouseEntered
+
+    private void btn_tablaPrestamosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tablaPrestamosMouseExited
+        // TODO add your handling code here:
+        btn_tablaPrestamos.setBackground(new Color(205, 155, 249));
+    }//GEN-LAST:event_btn_tablaPrestamosMouseExited
 
     /**
      * @param args the command line arguments
@@ -439,11 +555,11 @@ public class frm_prestamo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton brn_guardar;
     private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_menu;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_tablaPrestamos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

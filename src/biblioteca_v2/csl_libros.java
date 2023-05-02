@@ -62,7 +62,7 @@ public class csl_libros extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(216, 154, 193));
 
         jLabel1.setText("Libros resgistrados");
 
