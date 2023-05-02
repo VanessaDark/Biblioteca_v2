@@ -63,7 +63,7 @@ public class csl_prestamos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btn_menu = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,11 +74,21 @@ public class csl_prestamos extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Menu");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 31, -1, -1));
+        btn_menu.setText("Menu");
+        btn_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 31, -1, -1));
 
-        jButton2.setText("Salir");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(634, 40, -1, -1));
+        jButton2.setText("Cerrar ventana");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, -1, -1));
 
         jLabel1.setText("Prestamos de libros");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 44, -1, -1));
@@ -96,7 +106,7 @@ public class csl_prestamos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tb_prestamos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 640, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 640, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,6 +125,18 @@ public class csl_prestamos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
+        // TODO add your handling code here:
+        Menu abrir=new Menu();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_menuActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,7 +174,7 @@ public class csl_prestamos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_menu;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

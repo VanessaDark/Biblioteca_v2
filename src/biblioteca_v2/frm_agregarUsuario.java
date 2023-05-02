@@ -4,6 +4,7 @@
  */
 package biblioteca_v2;
 
+import java.awt.Color;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
@@ -18,6 +19,55 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
     
     public frm_agregarUsuario() {
         initComponents();
+    }
+    
+    public void validar(){
+        
+        if(txt_idUsuario.getText().isEmpty()){
+            txt_idUsuario.setBackground(new Color(251, 197, 197));
+        }else{
+              txt_idUsuario.setBackground(new Color(224, 251, 197));
+        }
+        
+        if(txt_nombre.getText().isEmpty()){
+         txt_nombre.setBackground(new Color(251, 197, 197));
+        }else{
+              txt_nombre.setBackground(new Color(224, 251, 197));
+        }
+        
+        if(txt_telefono.getText().isEmpty()){
+         txt_telefono.setBackground(new Color(251, 197, 197));
+        }else{
+          txt_telefono.setBackground(new Color(224, 251, 197));
+        }
+        
+        if(txt_correo.getText().isEmpty()){
+         txt_correo.setBackground(new Color(251, 197, 197));
+        }else if(!txt_correo.getText().contains("@") || !txt_correo.getText().contains(".")){
+            validCorreo.setText("*Correo invalido"); 
+        }else{
+            validCorreo.setText("");
+              txt_correo.setBackground(new Color(224, 251, 197));
+        }
+        
+        
+        
+        if(txt_direccion.getText().isEmpty()){
+         txt_direccion.setBackground(new Color(251, 197, 197));
+        }else{
+              txt_direccion.setBackground(new Color(224, 251, 197));
+        }
+  
+         if(txt_idUsuario.getText().isEmpty() ||
+            txt_nombre.getText().isEmpty()    ||
+            txt_telefono.getText().isEmpty()  ||
+            txt_correo.getText().isEmpty()    || validCorreo.getText().equals("*Correo invalido") ||
+            txt_direccion.getText().isEmpty()){
+             
+             btn_guardar.setEnabled(false);
+         }else{
+             btn_guardar.setEnabled(true);
+         }
     }
 
     /**
@@ -45,6 +95,7 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         txt_idUsuario = new javax.swing.JTextField();
+        validCorreo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Formulario agregar Usuario");
@@ -74,9 +125,41 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
 
         jLabel5.setText("Direccion");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
+
+        txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_nombreKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 200, 30));
+
+        txt_telefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_telefonoActionPerformed(evt);
+            }
+        });
+        txt_telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_telefonoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_telefonoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 200, 30));
+
+        txt_correo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_correoKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 170, 30));
+
+        txt_direccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_direccionKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 170, 30));
 
         btn_tabla.setText("Mostrar datos");
@@ -112,17 +195,25 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, -1, -1));
 
         txt_idUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_idUsuarioKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_idUsuarioKeyTyped(evt);
             }
         });
         jPanel1.add(txt_idUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 70, 30));
 
+        validCorreo.setText("jLabel6");
+        jPanel1.add(validCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 90, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +312,50 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
         // Boton tabla datos
         csl_usuario abrir=new csl_usuario();
         abrir.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btn_tablaActionPerformed
+
+    private void txt_idUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idUsuarioKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_txt_idUsuarioKeyReleased
+
+    private void txt_nombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyReleased
+        // TODO add your handling code here:
+         validar();
+    }//GEN-LAST:event_txt_nombreKeyReleased
+
+    private void txt_telefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoKeyReleased
+        // TODO add your handling code here:
+         validar();
+    }//GEN-LAST:event_txt_telefonoKeyReleased
+
+    private void txt_correoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_correoKeyReleased
+        // TODO add your handling code here:
+         validar();
+    }//GEN-LAST:event_txt_correoKeyReleased
+
+    private void txt_direccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_direccionKeyReleased
+        // TODO add your handling code here:
+         validar();
+    }//GEN-LAST:event_txt_direccionKeyReleased
+
+    private void txt_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_telefonoActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_txt_telefonoActionPerformed
+
+    private void txt_telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoKeyTyped
+        // TODO add your handling code here:
+        char validar=evt.getKeyChar();
+        
+        if(Character.isLetter((validar))){
+            getToolkit().beep();
+            evt.consume();
+            
+            JOptionPane.showMessageDialog(rootPane, "Ingrese solo numeros");
+        }
+    }//GEN-LAST:event_txt_telefonoKeyTyped
 
     /**
      * @param args the command line arguments
@@ -275,5 +409,6 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txt_idUsuario;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;
+    private javax.swing.JLabel validCorreo;
     // End of variables declaration//GEN-END:variables
 }

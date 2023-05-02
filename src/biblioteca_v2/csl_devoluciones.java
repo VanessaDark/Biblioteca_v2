@@ -4,17 +4,50 @@
  */
 package biblioteca_v2;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author vanes
  */
 public class csl_devoluciones extends javax.swing.JFrame {
 
-    /**
-     * Creates new form csl_devoluciones
-     */
+    private DefaultTableModel modelo;
+    int contador=0;
+    
     public csl_devoluciones() {
         initComponents();
+        CargarInterfaz();
+        CargarDatos();
+    }
+    
+     public void CargarInterfaz(){
+        String datos[][]={};
+        String columna[]={"ID","Id prestamo","Id usuario","Nombre","Id libro","Libro","Fecha prestamo","Fecha devolucion","Fecha devuelto"};
+        modelo=new DefaultTableModel(datos,columna);
+        tb_devoluciones.setModel(modelo);
+    }
+    
+    public void CargarDatos(){
+        class_usuario usuario;
+        for(int i=0; i<frm_devolucion.contenedorDevoluciones.size(); i++){
+            usuario=(class_usuario)frm_devolucion.contenedorDevoluciones.get(i);
+            modelo.insertRow(contador,new Object[]{});
+            modelo.setValueAt(usuario.getIdDevolucion(),contador, 0);
+            modelo.setValueAt(usuario.getId_prestamo(),contador, 1);
+            modelo.setValueAt(usuario.getId_Usuario(),contador, 2);
+              
+            modelo.setValueAt(usuario.getNombre(),contador, 3);
+            modelo.setValueAt(usuario.getId_libro(),contador, 4);
+            modelo.setValueAt(usuario.getLibro(),contador, 5);
+            modelo.setValueAt(usuario.getFechaInicio(),contador, 6);
+            modelo.setValueAt(usuario.getFechaDevolucion(),contador, 7);
+                
+            modelo.setValueAt(usuario.getFechaHoy(),contador, 8);
+           
+
+            
+        }
     }
 
     /**
@@ -27,27 +60,37 @@ public class csl_devoluciones extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btn_menu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btn_salir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_devoluciones = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Menu");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        btn_menu.setText("Menu");
+        btn_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         jLabel1.setText("Devoluciones");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
-        jButton2.setText("Salir");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
+        btn_salir.setText("Cerrar ventana");
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_devoluciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,15 +101,17 @@ public class csl_devoluciones extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tb_devoluciones);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, 330));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 590, 330));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,6 +120,18 @@ public class csl_devoluciones extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
+        // TODO add your handling code here:
+        Menu abrir=new Menu();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_menuActionPerformed
+
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btn_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,11 +169,11 @@ public class csl_devoluciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_menu;
+    private javax.swing.JButton btn_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tb_devoluciones;
     // End of variables declaration//GEN-END:variables
 }

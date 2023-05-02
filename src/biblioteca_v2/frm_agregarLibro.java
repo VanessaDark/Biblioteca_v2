@@ -4,6 +4,7 @@
  */
 package biblioteca_v2;
 
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
@@ -24,6 +25,62 @@ public class frm_agregarLibro extends javax.swing.JFrame {
     public frm_agregarLibro() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+    }
+    
+    public void validar(){
+        
+        if(txt_idLibro.getText().isEmpty()){
+            txt_idLibro.setBackground(new Color(251, 197, 197));
+        }else{
+              txt_idLibro.setBackground(new Color(224, 251, 197));
+        }
+        
+        if(txt_libro.getText().isEmpty()){
+         txt_libro.setBackground(new Color(251, 197, 197));
+        }else{
+              txt_libro.setBackground(new Color(224, 251, 197));
+        }
+        
+        if(txt_autor.getText().isEmpty()){
+         txt_autor.setBackground(new Color(251, 197, 197));
+        }else{
+              txt_autor.setBackground(new Color(224, 251, 197));
+        }
+        
+        if(txt_editorial.getText().isEmpty()){
+         txt_editorial.setBackground(new Color(251, 197, 197));
+        }else{
+              txt_editorial.setBackground(new Color(224, 251, 197));
+        }
+        
+        if(txt_edicion.getText().isEmpty()){
+         txt_edicion.setBackground(new Color(251, 197, 197));
+        }else{
+              txt_edicion.setBackground(new Color(224, 251, 197));
+        }
+        
+        if(jdate_fecha.getCalendar()==null){
+          jdate_fecha.setBackground(new Color(251, 197, 197));
+        }else{
+              jdate_fecha.setBackground(new Color(224, 251, 197));
+        }
+        
+        int value = (int) sp_cant.getValue();
+        
+       if(value <= 0){   
+              sp_cant.setBackground(new Color(251, 197, 197));
+        }else{
+              sp_cant.setBackground(new Color(224, 251, 197));
+        }
+        
+         if(txt_idLibro.getText().isEmpty() || txt_libro.getText().isEmpty() || txt_autor.getText().isEmpty() || txt_editorial.getText().isEmpty() || 
+                 txt_edicion.getText().isEmpty() ){
+             
+             btn_guardar.setEnabled(false);
+         }else{
+             btn_guardar.setEnabled(true);
+         }
     }
 
     /**
@@ -49,12 +106,12 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txt_edicion = new javax.swing.JTextField();
-        txt_cantidad = new javax.swing.JTextField();
         btn_tabla = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         jdate_fecha = new com.toedter.calendar.JDateChooser();
+        sp_cant = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Formulario agregar libros");
@@ -75,6 +132,9 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
         txt_idLibro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_idLibroKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_idLibroKeyTyped(evt);
             }
@@ -84,16 +144,34 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         jLabel2.setText("Libro");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+
+        txt_libro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_libroKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 172, 240, 30));
 
         jLabel3.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         jLabel3.setText("Autor");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
+
+        txt_autor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_autorKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 240, 30));
 
         jLabel4.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         jLabel4.setText("Editorial");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
+
+        txt_editorial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_editorialKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_editorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 240, 30));
 
         jLabel5.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
@@ -107,8 +185,13 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         jLabel7.setText("Cantidad");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
+
+        txt_edicion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_edicionKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_edicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 230, 30));
-        jPanel1.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 230, 30));
 
         btn_tabla.setText("Mostrar datos");
         btn_tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -145,7 +228,21 @@ public class frm_agregarLibro extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 93, 33));
+
+        jdate_fecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jdate_fechaKeyReleased(evt);
+            }
+        });
         jPanel1.add(jdate_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 230, 30));
+
+        sp_cant.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        sp_cant.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                sp_cantKeyReleased(evt);
+            }
+        });
+        jPanel1.add(sp_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,21 +270,23 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         String editorial=txt_editorial.getText();
         String ediccion=txt_edicion.getText();
         String fecha=((JTextField)jdate_fecha.getDateEditor().getUiComponent()).getText();
-        int cantidad=Integer.parseInt(txt_cantidad.getText());
+        int cantidad=Integer.parseInt(sp_cant.getValue().toString());
         
         
+            
        class_libro libros = new class_libro(id, libro, autor, editorial, ediccion, fecha, cantidad);
        contenedorLibros.add(libros);
-        
-        JOptionPane.showMessageDialog(null, "Auto registrado y guardado exitosamente");
-        
-        txt_idLibro.setText("");
+       JOptionPane.showMessageDialog(null, "Datos de libro registrado");
+     
+       
+         txt_idLibro.setText("");
         txt_libro.setText("");
         txt_autor.setText("");
         txt_editorial.setText("");
         txt_edicion.setText("");
         jdate_fecha.setCalendar(null);
-        txt_cantidad.setText("");
+        sp_cant.setValue(0);
+           
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_idLibroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idLibroKeyTyped
@@ -204,7 +303,7 @@ public class frm_agregarLibro extends javax.swing.JFrame {
                     txt_editorial.setText(libro.getEditorial());
                     txt_edicion.setText(libro.getEdicion());
                     ((JTextField)jdate_fecha.getDateEditor().getUiComponent()).setText(libro.getFecha());
-                    txt_cantidad.setText(Integer.toString(libro.getCantidad()));
+                    sp_cant.setValue(Integer.toString(libro.getCantidad()));
                     buscar=i;
                     break;
                     
@@ -224,7 +323,7 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         String editorial=txt_editorial.getText();
         String ediccion=txt_edicion.getText();
         String fecha=((JTextField)jdate_fecha.getDateEditor().getUiComponent()).getText();
-        int cantidad=Integer.parseInt(txt_cantidad.getText());
+        int cantidad=Integer.parseInt(sp_cant.getValue().toString());
         
         
         class_libro libros = new class_libro(id, libro, autor, editorial, ediccion, fecha, cantidad);
@@ -237,7 +336,8 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         txt_editorial.setText("");
         txt_edicion.setText("");
         jdate_fecha.setCalendar(null);
-        txt_cantidad.setText("");
+        sp_cant.setValue(0);
+     
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
@@ -249,7 +349,8 @@ public class frm_agregarLibro extends javax.swing.JFrame {
          txt_editorial.setText("");
          txt_edicion.setText("");
          jdate_fecha.setCalendar(null);
-         txt_cantidad.setText("");
+         sp_cant.setValue(0);
+     
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
@@ -263,7 +364,43 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         // Boton mostrar tabla
         csl_libros abrir=new csl_libros();
         abrir.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btn_tablaActionPerformed
+
+    private void txt_idLibroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idLibroKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_txt_idLibroKeyReleased
+
+    private void txt_libroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_libroKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_txt_libroKeyReleased
+
+    private void txt_autorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_autorKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_txt_autorKeyReleased
+
+    private void txt_editorialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_editorialKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_txt_editorialKeyReleased
+
+    private void txt_edicionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_edicionKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_txt_edicionKeyReleased
+
+    private void jdate_fechaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdate_fechaKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_jdate_fechaKeyReleased
+
+    private void sp_cantKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sp_cantKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_sp_cantKeyReleased
 
     /**
      * @param args the command line arguments
@@ -315,8 +452,8 @@ public class frm_agregarLibro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private com.toedter.calendar.JDateChooser jdate_fecha;
+    private javax.swing.JSpinner sp_cant;
     private javax.swing.JTextField txt_autor;
-    private javax.swing.JTextField txt_cantidad;
     private javax.swing.JTextField txt_edicion;
     private javax.swing.JTextField txt_editorial;
     private javax.swing.JTextField txt_idLibro;

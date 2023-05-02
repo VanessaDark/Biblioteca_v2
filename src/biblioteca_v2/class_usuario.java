@@ -19,6 +19,9 @@ public class class_usuario extends class_libro{
     private String id_prestamo;
     private String fechaInicio;
     private String fechaDevolucion;
+    
+    private  String idDevolucion;
+    private String fechaHoy;
  
     public class_usuario(String id_libro, String libro, String autor,String id_Usuario, String nombre, int telefono, String correo, String direccion,String id_prestamo,String fechaInicio,String fechaDevolucion) {
         super(id_libro, libro, autor);
@@ -40,7 +43,35 @@ public class class_usuario extends class_libro{
         this.correo = correo;
         this.direccion = direccion;
     }
+    
+    public class_usuario(String idDevolucion, String id_prestamo, String id_Usuario, String nombre, String id_libro, String libro,String fechaInicio,String fechaDevolucion, String fechaHoy){
+        super(id_libro, libro, null);
+        this.idDevolucion=idDevolucion;
+        this.id_prestamo=id_prestamo;
+        this.id_Usuario=id_Usuario;
+        this.nombre=nombre;
+        this.fechaInicio=fechaInicio;
+        this.fechaDevolucion=fechaDevolucion;
+        this.fechaHoy=fechaHoy;
+       
+    }
 
+    public String getIdDevolucion() {
+        return idDevolucion;
+    }
+
+    public void setIdDevolucion(String idDevolucion) {
+        this.idDevolucion = idDevolucion;
+    }
+
+    public String getFechaHoy() {
+        return fechaHoy;
+    }
+
+    public void setFechaHoy(String fechaHoy) {
+        this.fechaHoy = fechaHoy;
+    }
+ 
     public String getId_Usuario() {
         return id_Usuario;
     }

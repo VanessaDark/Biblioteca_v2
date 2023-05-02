@@ -4,6 +4,10 @@
  */
 package biblioteca_v2;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
+
 /**
  *
  * @author vanes
@@ -15,7 +19,25 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        tiempo();
     }
+    
+   public void tiempo(){
+          Timer timer = new Timer(1000, e -> {
+            Date date = new Date();
+
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDate = dateFormatter.format(date);
+            lb_fecha.setText(formattedDate);
+
+            SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm:ss a");
+            String formattedTime = timeFormatter.format(date);
+            lb_hora.setText(formattedTime);
+
+            
+        });
+        timer.start();
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,29 +49,186 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btn_libro = new javax.swing.JButton();
+        btn_TablaLibros = new javax.swing.JButton();
+        btn_usuario = new javax.swing.JButton();
+        btn_tablaUsuarios = new javax.swing.JButton();
+        btn_prestamo = new javax.swing.JButton();
+        btn_tablaPrestamo = new javax.swing.JButton();
+        btn_devoluciones = new javax.swing.JButton();
+        btn_tablaDevoluciones = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lb_hora = new javax.swing.JLabel();
+        lb_fecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btn_libro.setText("Registrar libro");
+        btn_libro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_libroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 120, 50));
+
+        btn_TablaLibros.setText("Libros registrados");
+        btn_TablaLibros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TablaLibrosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_TablaLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 130, 50));
+
+        btn_usuario.setText("Registros de usuarios");
+        btn_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_usuarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 120, 50));
+
+        btn_tablaUsuarios.setText("Usuarios registrados");
+        btn_tablaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tablaUsuariosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_tablaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 130, 50));
+
+        btn_prestamo.setText("Prestamos");
+        btn_prestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prestamoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_prestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 120, 60));
+
+        btn_tablaPrestamo.setText("Prestamos registrados");
+        btn_tablaPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tablaPrestamoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_tablaPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 130, 60));
+
+        btn_devoluciones.setText("Devoluciones");
+        btn_devoluciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_devolucionesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_devoluciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 120, 50));
+
+        btn_tablaDevoluciones.setText("Registro devoluciones");
+        btn_tablaDevoluciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tablaDevolucionesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_tablaDevoluciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 130, 50));
+
+        jLabel1.setText("Menu");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 50, 30));
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logTec.jpg"))); // NOI18N
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 200, 120));
+
+        jLabel3.setText("Hora");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 60, 40));
+
+        jLabel4.setText("Fecha");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, -1, -1));
+
+        lb_hora.setText("hh:mm:ss");
+        jPanel3.add(lb_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
+
+        lb_fecha.setText("dd/mm/yyyy");
+        jPanel3.add(lb_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 250, 560));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_libroActionPerformed
+        frm_agregarLibro abrir=new frm_agregarLibro();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_libroActionPerformed
+
+    private void btn_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_usuarioActionPerformed
+        // TODO add your handling code here:
+        frm_agregarUsuario abrir=new frm_agregarUsuario();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_usuarioActionPerformed
+
+    private void btn_prestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamoActionPerformed
+        // TODO add your handling code here:
+        frm_prestamo abrir=new frm_prestamo();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_prestamoActionPerformed
+
+    private void btn_devolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_devolucionesActionPerformed
+        // TODO add your handling code here:
+        frm_devolucion abrir=new frm_devolucion();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_devolucionesActionPerformed
+
+    private void btn_TablaLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TablaLibrosActionPerformed
+        // TODO add your handling code here:
+        csl_libros abrir=new csl_libros();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_TablaLibrosActionPerformed
+
+    private void btn_tablaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tablaUsuariosActionPerformed
+        // TODO add your handling code here:
+        csl_usuario abrir=new csl_usuario();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_tablaUsuariosActionPerformed
+
+    private void btn_tablaPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tablaPrestamoActionPerformed
+        // TODO add your handling code here:
+        csl_prestamos abrir=new csl_prestamos();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_tablaPrestamoActionPerformed
+
+    private void btn_tablaDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tablaDevolucionesActionPerformed
+        // TODO add your handling code here:
+        csl_devoluciones abrir=new csl_devoluciones();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_tablaDevolucionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,6 +266,21 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_TablaLibros;
+    private javax.swing.JButton btn_devoluciones;
+    private javax.swing.JButton btn_libro;
+    private javax.swing.JButton btn_prestamo;
+    private javax.swing.JButton btn_tablaDevoluciones;
+    private javax.swing.JButton btn_tablaPrestamo;
+    private javax.swing.JButton btn_tablaUsuarios;
+    private javax.swing.JButton btn_usuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lb_fecha;
+    private javax.swing.JLabel lb_hora;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,7 @@ import com.toedter.calendar.JDateChooser;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -17,9 +18,9 @@ import javax.swing.JTextField;
  */
 public class frm_devolucion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frm_devolucion
-     */
+      public static LinkedList contenedorDevoluciones = new LinkedList();
+      public int buscar;
+      
     public frm_devolucion() {
         initComponents();
       
@@ -57,26 +58,26 @@ public class frm_devolucion extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_idUsuario = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txt_nombre = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txt_idLibro = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txt_libro = new javax.swing.JTextField();
+        btn_tabla = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jdate_inicio = new com.toedter.calendar.JDateChooser();
         jdate_devolucion = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txt_idDevolucion = new javax.swing.JTextField();
+        txt_idPrestamo = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jdate_hoy = new com.toedter.calendar.JDateChooser();
         jLabel10 = new javax.swing.JLabel();
@@ -92,6 +93,11 @@ public class frm_devolucion extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, -1));
 
         jButton1.setText("Menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel2.setText("Id prestamo");
@@ -104,11 +110,11 @@ public class frm_devolucion extends javax.swing.JFrame {
 
         jLabel4.setText("id");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 90, -1));
+        jPanel2.add(txt_idUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 90, -1));
 
         jLabel9.setText("Nombre");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 140, -1));
+        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 140, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 280, 200));
 
@@ -116,16 +122,21 @@ public class frm_devolucion extends javax.swing.JFrame {
 
         jLabel5.setText("Id");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 98, -1));
+        jPanel3.add(txt_idLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 98, -1));
 
         jLabel12.setText("Libro");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
-        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 130, -1));
+        jPanel3.add(txt_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 130, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 320, 130));
 
-        jButton2.setText("Mostrar tabla");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 320, -1));
+        btn_tabla.setText("Mostrar tabla");
+        btn_tabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tablaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 320, -1));
 
         jLabel6.setText("fecha de prestamo");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
@@ -137,8 +148,20 @@ public class frm_devolucion extends javax.swing.JFrame {
 
         jLabel8.setText("Id devolucion");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 100, -1));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 100, -1));
+
+        txt_idDevolucion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idDevolucionKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_idDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 100, -1));
+
+        txt_idPrestamo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idPrestamoKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_idPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 100, -1));
 
         jButton3.setText("Calcular");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -149,13 +172,28 @@ public class frm_devolucion extends javax.swing.JFrame {
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, -1, -1));
 
         btn_guardar.setText("Guardar");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, -1, -1));
 
         btn_modificar.setText("Modificar");
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, -1, -1));
 
-        jButton6.setText("Eliminar");
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 500, -1, -1));
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 500, -1, -1));
 
         jLabel11.setText("Fecha de hoy");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
@@ -185,6 +223,152 @@ public class frm_devolucion extends javax.swing.JFrame {
         // TODO add your handling code here:
         calculardias(jdate_devolucion, jdate_hoy);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btn_tablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tablaActionPerformed
+        // TODO add your handling code here:
+        csl_devoluciones abrir=new csl_devoluciones();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_tablaActionPerformed
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        // TODO add your handling code here:
+        String idDevolucion=txt_idDevolucion.getText();
+        String idPrestamo=txt_idPrestamo.getText();
+        String idUsuario=txt_idUsuario.getText();
+        String nombre=txt_nombre.getText();
+        String idLibro=txt_idLibro.getText();
+        String libro=txt_libro.getText();
+        String fechaInicio=((JTextField)jdate_inicio.getDateEditor().getUiComponent()).getText();
+        String fechaDevolucion=((JTextField)jdate_devolucion.getDateEditor().getUiComponent()).getText();
+        String fechaHoy=((JTextField)jdate_hoy.getDateEditor().getUiComponent()).getText();
+        
+        class_usuario devolucion=new class_usuario(idDevolucion,idPrestamo, idUsuario, nombre, idLibro, libro, fechaInicio, fechaDevolucion, fechaHoy);
+        contenedorDevoluciones.add(devolucion);
+        
+        JOptionPane.showMessageDialog(null, "Datos de devolucion guardados");
+        
+        txt_idDevolucion.setText("");
+        txt_idPrestamo.setText("");
+        txt_idUsuario.setText("");
+        txt_nombre.setText("");
+        txt_idLibro.setText("");
+        txt_libro.setText("");
+        jdate_inicio.setCalendar(null);
+        jdate_devolucion.setCalendar(null);
+        jdate_hoy.setCalendar(null);
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        // TODO add your handling code here:
+        contenedorDevoluciones.remove(buscar);
+        txt_idDevolucion.setText("");
+        txt_idPrestamo.setText("");
+        txt_idUsuario.setText("");
+        txt_nombre.setText("");
+        txt_idLibro.setText("");
+        txt_libro.setText("");
+        jdate_inicio.setCalendar(null);
+        jdate_devolucion.setCalendar(null);
+        jdate_hoy.setCalendar(null);
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void txt_idPrestamoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idPrestamoKeyTyped
+        // Busca el prestamo para llenar los campos
+        int press=evt.getKeyChar();
+        if(press==10){
+            String idEncontrado=txt_idPrestamo.getText().trim();
+            class_usuario usuario;
+            for(int i = 0; i < frm_prestamo.contenedorPrestamos.size(); i++){
+                usuario=(class_usuario)frm_prestamo.contenedorPrestamos.get(i);
+                if(idEncontrado.equalsIgnoreCase(usuario.getId_Usuario())){
+                    
+                    ((JTextField)jdate_inicio.getDateEditor().getUiComponent()).setText(usuario.getFechaInicio());
+                    ((JTextField)jdate_devolucion.getDateEditor().getUiComponent()).setText(usuario.getFechaDevolucion());
+                    
+                    txt_idUsuario.setText(usuario.getId_Usuario());
+                    txt_nombre.setText(usuario.getNombre());
+                    txt_idLibro.setText(usuario.getId_libro());
+                    txt_libro.setText(usuario.getLibro());
+                    buscar=i;
+                    break;
+                    
+                }//Fin if
+                    
+            }//fin for
+            
+        }//Fin if
+        
+    }//GEN-LAST:event_txt_idPrestamoKeyTyped
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        // TODO add your handling code here:
+        
+        String idDevolucion=txt_idDevolucion.getText();
+        String idPrestamo=txt_idPrestamo.getText();
+        String idUsuario=txt_idUsuario.getText();
+        String nombre=txt_nombre.getText();
+        String idLibro=txt_idLibro.getText();
+        String libro=txt_libro.getText();
+        String fechaInicio=((JTextField)jdate_inicio.getDateEditor().getUiComponent()).getText();
+        String fechaDevolucion=((JTextField)jdate_devolucion.getDateEditor().getUiComponent()).getText();
+        String fechaHoy=((JTextField)jdate_hoy.getDateEditor().getUiComponent()).getText();
+        
+        class_usuario devolucion=new class_usuario(idDevolucion,idPrestamo, idUsuario, nombre, idLibro, libro, fechaInicio, fechaDevolucion, fechaHoy);
+        contenedorDevoluciones.add(devolucion);
+        
+        JOptionPane.showMessageDialog(null, "Datos de devolucion guardados");
+        
+        frm_prestamo.contenedorPrestamos.remove(buscar);
+        txt_idDevolucion.setText("");
+        txt_idPrestamo.setText("");
+        txt_idUsuario.setText("");
+        txt_nombre.setText("");
+        txt_idLibro.setText("");
+        txt_libro.setText("");
+        jdate_inicio.setCalendar(null);
+        jdate_devolucion.setCalendar(null);
+        jdate_hoy.setCalendar(null);
+        
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void txt_idDevolucionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idDevolucionKeyTyped
+        // TODO add your handling code here:
+         int press=evt.getKeyChar();
+        if(press==10){
+            String idEncontrado=txt_idPrestamo.getText().trim();
+            class_usuario usuario;
+            for(int i = 0; i < contenedorDevoluciones.size(); i++){
+                usuario=(class_usuario)contenedorDevoluciones.get(i);
+                if(idEncontrado.equalsIgnoreCase(usuario.getId_Usuario())){
+                    
+                    ((JTextField)jdate_inicio.getDateEditor().getUiComponent()).setText(usuario.getFechaInicio());
+                    ((JTextField)jdate_devolucion.getDateEditor().getUiComponent()).setText(usuario.getFechaDevolucion());
+                    txt_idDevolucion.setText(usuario.getIdDevolucion());
+                    txt_idPrestamo.setText(usuario.getId_prestamo());
+                    txt_idUsuario.setText(usuario.getId_Usuario());
+                    txt_nombre.setText(usuario.getNombre());
+                    txt_idLibro.setText(usuario.getId_libro());
+                    txt_libro.setText(usuario.getLibro());
+                    ((JTextField)jdate_inicio.getDateEditor().getUiComponent()).setText(usuario.getFechaInicio());
+                    ((JTextField)jdate_devolucion.getDateEditor().getUiComponent()).setText(usuario.getFechaDevolucion());
+                    ((JTextField)jdate_hoy.getDateEditor().getUiComponent()).setText(usuario.getFechaHoy());
+                    buscar=i;
+                    break;
+                    
+                }//Fin if
+                    
+            }//fin for
+            
+        }//Fin if
+    }//GEN-LAST:event_txt_idDevolucionKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Menu abrir=new Menu();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,12 +406,12 @@ public class frm_devolucion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_modificar;
+    private javax.swing.JButton btn_tabla;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -243,15 +427,15 @@ public class frm_devolucion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private com.toedter.calendar.JDateChooser jdate_devolucion;
     private com.toedter.calendar.JDateChooser jdate_hoy;
     private com.toedter.calendar.JDateChooser jdate_inicio;
     private javax.swing.JTextField txt_dias;
+    private javax.swing.JTextField txt_idDevolucion;
+    private javax.swing.JTextField txt_idLibro;
+    private javax.swing.JTextField txt_idPrestamo;
+    private javax.swing.JTextField txt_idUsuario;
+    private javax.swing.JTextField txt_libro;
+    private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 }

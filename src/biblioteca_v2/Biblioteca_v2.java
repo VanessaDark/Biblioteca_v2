@@ -4,8 +4,11 @@
  */
 package biblioteca_v2;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
+import javax.swing.Timer;
 
 /**
  *
@@ -32,6 +35,22 @@ public class Biblioteca_v2 {
            
        }
     }
+     public void tiempo(){
+          Timer timer = new Timer(1000, e -> {
+            Date date = new Date();
+
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDate = dateFormatter.format(date);
+            //dateLabel.setText(formattedDate);
+
+            SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm:ss a");
+            String formattedTime = timeFormatter.format(date);
+            //timeLabel.setText(formattedTime);
+
+            
+        });
+        timer.start();
+     }
      
     public static void main(String[] args) {
         porcentaje();

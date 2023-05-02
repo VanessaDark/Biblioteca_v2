@@ -67,6 +67,11 @@ public class csl_libros extends javax.swing.JFrame {
         jLabel1.setText("Libros resgistrados");
 
         btn_menu.setText("Menu");
+        btn_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menuActionPerformed(evt);
+            }
+        });
 
         btn_cerrar.setText("Cerrar ventana");
         btn_cerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +141,13 @@ public class csl_libros extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btn_cerrarActionPerformed
+
+    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
+        // TODO add your handling code here:
+        Menu abrir=new Menu();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_menuActionPerformed
 
     /**
      * @param args the command line arguments
