@@ -6,6 +6,8 @@ package biblioteca_v2;
 
 import java.awt.Color;
 import java.util.concurrent.TimeUnit;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,10 +16,15 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
+    Icon correcto;
+    Icon incorrecto;
     int counter;
+    
     public Login() {
         initComponents();
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
+        correcto = new ImageIcon("src/img/correct.png");
+        incorrecto = new ImageIcon("src/img/incorrecto.png");
     }
 
     /**
@@ -106,7 +113,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 370, 29));
 
         loginBtn.setBackground(new java.awt.Color(29, 139, 213));
-        loginBtn.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        loginBtn.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         loginBtn.setText("Aceptar");
         loginBtn.setBorder(null);
         loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -233,7 +240,7 @@ public class Login extends javax.swing.JFrame {
         String pass= this.passTxt.getText();
         
         if(user.endsWith("BiblioTecnm") && pass.endsWith("12345")){
-            JOptionPane.showMessageDialog(null,"Bienvenido ");
+             JOptionPane.showMessageDialog(null,"Bienvenido ","Login",JOptionPane.WARNING_MESSAGE,correcto);
             Menu abrir=new Menu();
             abrir.setVisible(true);//Muestra el menu
             dispose();//Quita el login
@@ -241,7 +248,7 @@ public class Login extends javax.swing.JFrame {
             counter++;
 
             if (counter == 3) {
-                JOptionPane.showMessageDialog(this, "Excediste el número de intentos. Espera 10 segundos.");
+               JOptionPane.showMessageDialog(this, "Excediste el número de intentos. Espera 10 segundos.","Login",JOptionPane.WARNING_MESSAGE,incorrecto);
                 //message.setText("Excediste el número de intentos. Espera 10 segundos.");
                 loginBtn.setEnabled(false);
                 message.setText("Bloqueado");
@@ -258,7 +265,7 @@ public class Login extends javax.swing.JFrame {
                     loginBtn.setEnabled(true);
                 }).start();
             } else {
-                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos. Intento " + counter + " de 3.");
+                 JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos. Intento " + counter + " de 3.","Login",JOptionPane.WARNING_MESSAGE,incorrecto);
                 //message.setText("Usuario o contraseña incorrectos. Intento " + counter + " de 3.");
             }
         }

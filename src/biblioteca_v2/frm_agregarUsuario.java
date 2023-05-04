@@ -345,7 +345,7 @@ public class frm_agregarUsuario extends javax.swing.JFrame {
        
         
         class_usuario usuario=new class_usuario(id, nombre, telefono, correo, direccion);
-        contenedorUsuarios.add(usuario);
+        contenedorUsuarios.set(buscar, usuario);
         
         JOptionPane.showMessageDialog(null, "Datos de usuario modificado");
         

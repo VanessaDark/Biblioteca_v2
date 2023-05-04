@@ -6,6 +6,7 @@ package biblioteca_v2;
 
 import java.awt.Color;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -16,6 +17,8 @@ public class frm_prestamo extends javax.swing.JFrame {
 
     public static LinkedList contenedorPrestamos = new LinkedList();
     public int buscar;
+    
+    public int tlibro;
     
     public frm_prestamo() {
         initComponents();
@@ -50,7 +53,6 @@ public class frm_prestamo extends javax.swing.JFrame {
         txt_correo = new javax.swing.JTextField();
         txt_direccion = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -59,6 +61,12 @@ public class frm_prestamo extends javax.swing.JFrame {
         txt_autor = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txt_cantidad = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        txt_editorial = new javax.swing.JTextField();
+        txt_edicion = new javax.swing.JTextField();
+        jdate_fecha = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -156,12 +164,9 @@ public class frm_prestamo extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(135, 131, 251));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setText("Id libro");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, -1, -1));
-
         jLabel12.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
-        jLabel12.setText("Id libro");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        jLabel12.setText("Fecha");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         jLabel13.setText("Libro");
@@ -177,15 +182,30 @@ public class frm_prestamo extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txt_idLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 80, -1));
-        jPanel3.add(txt_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 160, -1));
-        jPanel3.add(txt_autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 160, -1));
+        jPanel3.add(txt_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 130, -1));
+        jPanel3.add(txt_autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 130, -1));
 
         jLabel16.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
         jLabel16.setText("Cantidad");
         jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-        jPanel3.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 160, -1));
+        jPanel3.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 110, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 320, 250));
+        jLabel17.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
+        jLabel17.setText("Id libro");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
+        jLabel18.setText("Editorial");
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
+
+        jLabel19.setFont(new java.awt.Font("Bodoni MT", 0, 18)); // NOI18N
+        jLabel19.setText("Edicion");
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+        jPanel3.add(txt_editorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 100, -1));
+        jPanel3.add(txt_edicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 100, -1));
+        jPanel3.add(jdate_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 100, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 510, 250));
 
         jLabel7.setFont(new java.awt.Font("NSimSun", 0, 18)); // NOI18N
         jLabel7.setText("Datos de usuario");
@@ -206,6 +226,11 @@ public class frm_prestamo extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_tablaPrestamosMouseExited(evt);
+            }
+        });
+        btn_tablaPrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tablaPrestamosActionPerformed(evt);
             }
         });
         jPanel1.add(btn_tablaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 570, 330, 30));
@@ -270,7 +295,7 @@ public class frm_prestamo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,10 +323,24 @@ public class frm_prestamo extends javax.swing.JFrame {
        String libro=txt_libro.getText();
        String autor=txt_autor.getText();
        int cantidad=Integer.parseInt(txt_cantidad.getText());
-       
-       class_usuario prestamoUsuario=new class_usuario(IdLibro, libro, autor, idUsuario, nombre, telefono, correo, direccion, idPrestamo, fechaInicio, fechaDevolucion);
+        String editorial=txt_editorial.getText();
+        String ediccion=txt_edicion.getText();
+        String fecha=((JTextField)jdate_fecha.getDateEditor().getUiComponent()).getText();
+        
+    
+       if(cantidad==0){
+           JOptionPane.showMessageDialog(null, "Libro agotado favor de elejir otro");
+       }else{
+           
+         class_usuario prestamoUsuario=new class_usuario(IdLibro, libro, autor, idUsuario, nombre, telefono, correo, direccion, idPrestamo, fechaInicio, fechaDevolucion);
        contenedorPrestamos.add(prestamoUsuario);
        
+       //Resta la cantidad de libros
+       int tlibros=cantidad-1;
+       class_libro ModifLibro=new class_libro(IdLibro, libro, autor, editorial, ediccion, fecha, tlibros);
+       frm_agregarLibro.contenedorLibros.set(buscar, ModifLibro);
+       
+       }
        //Al registrar los datos los campos se vacian
        //Datos del prestamos
        txt_idPrestamo.setText("");
@@ -317,8 +356,11 @@ public class frm_prestamo extends javax.swing.JFrame {
        txt_idLibro.setText("");
        txt_libro.setText("");
        txt_autor.setText("");
+       txt_edicion.setText("");
+       txt_editorial.setText("");
+       jdate_fecha.setCalendar(null);
        txt_cantidad.setText("");
-          
+       
         
     }//GEN-LAST:event_btn_guardarActionPerformed
 
@@ -335,6 +377,7 @@ public class frm_prestamo extends javax.swing.JFrame {
                     txt_telefono.setText(Integer.toString(usuario.getTelefono()));
                     txt_correo.setText(usuario.getCorreo());
                     txt_direccion.setText(usuario.getDireccion());
+                    
                     buscar=i;
                     break;
                     
@@ -354,9 +397,14 @@ public class frm_prestamo extends javax.swing.JFrame {
             for(int i = 0; i < frm_agregarLibro.contenedorLibros.size(); i++){
                 libro=(class_libro)frm_agregarLibro.contenedorLibros.get(i);
                 if(idEncontrado.equalsIgnoreCase(libro.getId_libro())){
+                    txt_idLibro.setText(libro.getId_libro());
                     txt_libro.setText(libro.getLibro());
-                    txt_autor.setText(libro.getLibro());
+                    txt_autor.setText(libro.getAutor());
+                    txt_editorial.setText(libro.getEditorial());
+                    txt_edicion.setText(libro.getEdicion());
                     txt_cantidad.setText(Integer.toString(libro.getCantidad()));
+                   ((JTextField)jdate_fecha.getDateEditor().getUiComponent()).setText(libro.getFecha());
+                   
                     buscar=i;
                     break;
                     
@@ -393,6 +441,9 @@ public class frm_prestamo extends javax.swing.JFrame {
                     txt_idLibro.setText(usuario.getId_libro());
                     txt_libro.setText(usuario.getLibro());
                     txt_autor.setText(usuario.getLibro());
+                    txt_editorial.setText(usuario.getEditorial());
+                    txt_edicion.setText(usuario.getEdicion());
+                    ((JTextField)jdate_fecha.getDateEditor().getUiComponent()).setText(usuario.getFecha());
                     txt_cantidad.setText(Integer.toString(usuario.getCantidad()));
                     
                     buscar=i;
@@ -422,7 +473,7 @@ public class frm_prestamo extends javax.swing.JFrame {
        String autor=txt_autor.getText();
        
        class_usuario prestamoUsuario=new class_usuario(IdLibro, libro, autor, idUsuario, nombre, telefono, correo, direccion, idPrestamo, fechaInicio, fechaDevolucion);
-       contenedorPrestamos.add(prestamoUsuario);
+        contenedorPrestamos.set(buscar, prestamoUsuario);
        
        //Al registrar los datos los campos se vacian
        //Datos del prestamos
@@ -519,6 +570,13 @@ public class frm_prestamo extends javax.swing.JFrame {
         btn_tablaPrestamos.setBackground(new Color(205, 155, 249));
     }//GEN-LAST:event_btn_tablaPrestamosMouseExited
 
+    private void btn_tablaPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tablaPrestamosActionPerformed
+        // TODO add your handling code here:
+        csl_prestamos abrir=new csl_prestamos();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_tablaPrestamosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -568,10 +626,12 @@ public class frm_prestamo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -581,12 +641,15 @@ public class frm_prestamo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private com.toedter.calendar.JDateChooser jdate_devolucion;
+    private com.toedter.calendar.JDateChooser jdate_fecha;
     private com.toedter.calendar.JDateChooser jdate_inicio;
     private javax.swing.JTextField txt_IdUsuario;
     private javax.swing.JTextField txt_autor;
     private javax.swing.JTextField txt_cantidad;
     private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_direccion;
+    private javax.swing.JTextField txt_edicion;
+    private javax.swing.JTextField txt_editorial;
     private javax.swing.JTextField txt_idLibro;
     private javax.swing.JTextField txt_idPrestamo;
     private javax.swing.JTextField txt_libro;

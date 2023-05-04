@@ -74,9 +74,14 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         }else{
               txt_edicion.setBackground(new Color(224, 251, 197));
         }
+        if(txt_cantidad.getText().isEmpty()){
+         txt_cantidad.setBackground(new Color(251, 197, 197));
+        }else{
+              txt_cantidad.setBackground(new Color(224, 251, 197));
+        }
         
          if(txt_idLibro.getText().isEmpty() || txt_libro.getText().isEmpty() || txt_autor.getText().isEmpty() || txt_editorial.getText().isEmpty() || 
-                 txt_edicion.getText().isEmpty() ){
+                 txt_edicion.getText().isEmpty() || txt_cantidad.getText().isEmpty()){
              
              btn_guardar.setEnabled(false);
          }else{
@@ -93,13 +98,13 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         String editorial=txt_editorial.getText().trim();
         String ediccion=txt_edicion.getText().trim();
         String fecha=((JTextField)jdate_fecha.getDateEditor().getUiComponent()).getText().trim();
-        int cantidad=Integer.parseInt(sp_cant.getValue().toString().trim());
+        int cantidad=Integer.parseInt(txt_cantidad.getText());
         
         int size = 1000;
         String FileType = "png";
         
         // Elegir la ruta de la imagen
-        String filePath = "C:\\Users\\vanes\\OneDrive\\Escritorio\\QR";
+        String filePath = "";
         JFileChooser chooser = new JFileChooser();
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -177,8 +182,8 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         btn_eliminar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         jdate_fecha = new com.toedter.calendar.JDateChooser();
-        sp_cant = new javax.swing.JSpinner();
         lblQr = new javax.swing.JLabel();
+        txt_cantidad = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -366,16 +371,18 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         });
         jPanel1.add(jdate_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 170, 30));
 
-        sp_cant.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        sp_cant.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                sp_cantKeyReleased(evt);
-            }
-        });
-        jPanel1.add(sp_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 100, -1));
-
         lblQr.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(lblQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 120, 380, 280));
+
+        txt_cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cantidadKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cantidadKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 150, 30));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fagregar.jpg"))); // NOI18N
         jLabel8.setText("jLabel8");
@@ -407,7 +414,7 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         String editorial=txt_editorial.getText();
         String ediccion=txt_edicion.getText();
         String fecha=((JTextField)jdate_fecha.getDateEditor().getUiComponent()).getText();
-        int cantidad=Integer.parseInt(sp_cant.getValue().toString());
+        int cantidad=Integer.parseInt(txt_cantidad.getText());
         
        
             
@@ -424,7 +431,7 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         txt_editorial.setText("");
         txt_edicion.setText("");
         jdate_fecha.setCalendar(null);
-        sp_cant.setValue(0);
+        txt_cantidad.setText("");
            
     }//GEN-LAST:event_btn_guardarActionPerformed
 
@@ -442,7 +449,7 @@ public class frm_agregarLibro extends javax.swing.JFrame {
                     txt_editorial.setText(libro.getEditorial());
                     txt_edicion.setText(libro.getEdicion());
                     ((JTextField)jdate_fecha.getDateEditor().getUiComponent()).setText(libro.getFecha());
-                    sp_cant.setValue(Integer.toString(libro.getCantidad()));
+                    txt_cantidad.setText(Integer.toString(libro.getCantidad()));
                     buscar=i;
                     break;
                     
@@ -462,12 +469,14 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         String editorial=txt_editorial.getText();
         String ediccion=txt_edicion.getText();
         String fecha=((JTextField)jdate_fecha.getDateEditor().getUiComponent()).getText();
-        int cantidad=Integer.parseInt(sp_cant.getValue().toString());
+        int cantidad=Integer.parseInt(txt_cantidad.getText());
         
         
         class_libro libros = new class_libro(id, libro, autor, editorial, ediccion, fecha, cantidad);
         contenedorLibros.set(buscar, libros);
         
+        JOptionPane.showMessageDialog(null, "Elija la ruta para guardar el QR");
+        QR();
        
         JOptionPane.showMessageDialog(null, "Datos de libro modificados");
         
@@ -476,20 +485,21 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         txt_editorial.setText("");
         txt_edicion.setText("");
         jdate_fecha.setCalendar(null);
-        sp_cant.setValue(0);
+        txt_cantidad.setText("");
      
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         //Boton para borrar los datos
          contenedorLibros.remove(buscar);
+         JOptionPane.showMessageDialog(null, "Datos del libro eliminados");
          txt_idLibro.setText("");
          txt_libro.setText("");
          txt_autor.setText("");
          txt_editorial.setText("");
          txt_edicion.setText("");
          jdate_fecha.setCalendar(null);
-         sp_cant.setValue(0);
+         txt_cantidad.setText("");
      
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
@@ -536,11 +546,6 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
         validar();
     }//GEN-LAST:event_jdate_fechaKeyReleased
-
-    private void sp_cantKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sp_cantKeyReleased
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_sp_cantKeyReleased
 
     private void btn_menuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menuMouseEntered
         // TODO add your handling code here:
@@ -591,6 +596,23 @@ public class frm_agregarLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
          btn_tabla.setBackground(new Color(107, 151, 85));
     }//GEN-LAST:event_btn_tablaMouseExited
+
+    private void txt_cantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cantidadKeyTyped
+        // TODO add your handling code here:
+         char validar=evt.getKeyChar();
+        
+        if(Character.isLetter((validar))){
+            getToolkit().beep();
+            evt.consume();
+            
+            JOptionPane.showMessageDialog(rootPane, "Ingrese solo numeros");
+        }
+    }//GEN-LAST:event_txt_cantidadKeyTyped
+
+    private void txt_cantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cantidadKeyReleased
+        // TODO add your handling code here:
+        validar();
+    }//GEN-LAST:event_txt_cantidadKeyReleased
 
     /**
      * @param args the command line arguments
@@ -644,8 +666,8 @@ public class frm_agregarLibro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private com.toedter.calendar.JDateChooser jdate_fecha;
     private javax.swing.JLabel lblQr;
-    private javax.swing.JSpinner sp_cant;
     private javax.swing.JTextField txt_autor;
+    private javax.swing.JTextField txt_cantidad;
     private javax.swing.JTextField txt_edicion;
     private javax.swing.JTextField txt_editorial;
     private javax.swing.JTextField txt_idLibro;

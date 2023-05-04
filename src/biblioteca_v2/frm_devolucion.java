@@ -66,6 +66,16 @@ public class frm_devolucion extends javax.swing.JFrame {
         txt_idLibro = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txt_libro = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        txt_autor = new javax.swing.JTextField();
+        txt_cantidad = new javax.swing.JTextField();
+        txt_editorial = new javax.swing.JTextField();
+        txt_edicion = new javax.swing.JTextField();
+        jdate_fecha = new com.toedter.calendar.JDateChooser();
         btn_tabla = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -121,24 +131,49 @@ public class frm_devolucion extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         jLabel9.setText("Nombre");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
-        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 140, -1));
+        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 140, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 280, 200));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 270, 210));
 
         jPanel3.setBackground(new java.awt.Color(159, 249, 134));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         jLabel5.setText("Id");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
-        jPanel3.add(txt_idLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 98, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        jPanel3.add(txt_idLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 98, -1));
 
         jLabel12.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
-        jLabel12.setText("Libro");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
-        jPanel3.add(txt_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 130, -1));
+        jLabel12.setText("Fecha");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
+        jPanel3.add(txt_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 130, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 320, 130));
+        jLabel13.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
+        jLabel13.setText("Libro");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
+        jLabel14.setText("Autor");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
+        jLabel15.setText("Cantidad");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
+        jLabel16.setText("Editorial");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
+        jLabel17.setText("Edicion");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, -1, -1));
+        jPanel3.add(txt_autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 130, -1));
+        jPanel3.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 130, -1));
+        jPanel3.add(txt_editorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 140, -1));
+        jPanel3.add(txt_edicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 140, -1));
+        jPanel3.add(jdate_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 140, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 530, 170));
 
         btn_tabla.setBackground(new java.awt.Color(168, 227, 218));
         btn_tabla.setText("Mostrar tabla");
@@ -216,7 +251,7 @@ public class frm_devolucion extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 495, -1, 30));
+        jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, -1, 30));
 
         jLabel11.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         jLabel11.setText("Fecha de hoy");
@@ -226,7 +261,7 @@ public class frm_devolucion extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
         jLabel10.setText("Dias transcurridos de la fecha devolucion a la actual");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 300, 30));
-        jPanel1.add(txt_dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 70, -1));
+        jPanel1.add(txt_dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 70, -1));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 690, 30));
@@ -235,7 +270,9 @@ public class frm_devolucion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +310,7 @@ public class frm_devolucion extends javax.swing.JFrame {
         
         
         class_usuario devolucion=new class_usuario(idDevolucion,idPrestamo, idUsuario, nombre, idLibro, libro, fechaInicio, fechaDevolucion, fechaHoy);
-        contenedorDevoluciones.add(devolucion);
+         contenedorDevoluciones.set(buscar, devolucion);
         
         JOptionPane.showMessageDialog(null, "Datos de devolucion guardados");
         
@@ -317,8 +354,15 @@ public class frm_devolucion extends javax.swing.JFrame {
                     
                     txt_idUsuario.setText(usuario.getId_Usuario());
                     txt_nombre.setText(usuario.getNombre());
+                    
                     txt_idLibro.setText(usuario.getId_libro());
                     txt_libro.setText(usuario.getLibro());
+                    txt_autor.setText(usuario.getAutor());
+                    txt_editorial.setText(usuario.getEditorial());
+                    txt_edicion.setText(usuario.getEdicion());
+                    txt_cantidad.setText(Integer.toString(usuario.getCantidad()));
+                   ((JTextField)jdate_fecha.getDateEditor().getUiComponent()).setText(usuario.getFecha());
+                   
                     buscar=i;
                     break;
                     
@@ -337,13 +381,22 @@ public class frm_devolucion extends javax.swing.JFrame {
         String idPrestamo=txt_idPrestamo.getText();
         String idUsuario=txt_idUsuario.getText();
         String nombre=txt_nombre.getText();
+        
         String idLibro=txt_idLibro.getText();
         String libro=txt_libro.getText();
+        String autor=txt_autor.getText();
+       int cantidad=Integer.parseInt(txt_cantidad.getText());
+        String editorial=txt_editorial.getText();
+        String ediccion=txt_edicion.getText();
+        String fecha=((JTextField)jdate_fecha.getDateEditor().getUiComponent()).getText();
+        
+        
+        
         String fechaInicio=((JTextField)jdate_inicio.getDateEditor().getUiComponent()).getText();
         String fechaDevolucion=((JTextField)jdate_devolucion.getDateEditor().getUiComponent()).getText();
         String fechaHoy=((JTextField)jdate_hoy.getDateEditor().getUiComponent()).getText();
         
-        
+        //Codigo para cobro o penalizacion por pasarse de los dias
         int dias=Integer.parseInt(txt_dias.getText());
    
         if(dias >0){
@@ -354,8 +407,13 @@ public class frm_devolucion extends javax.swing.JFrame {
         class_usuario devolucion=new class_usuario(idDevolucion,idPrestamo, idUsuario, nombre, idLibro, libro, fechaInicio, fechaDevolucion, fechaHoy);
         contenedorDevoluciones.add(devolucion);
         
+       int tlibros=cantidad+1;
+       class_libro ModifLibro=new class_libro(idLibro, libro, autor, editorial, ediccion, fecha, tlibros);
+       frm_agregarLibro.contenedorLibros.set(buscar, ModifLibro);
+        
         JOptionPane.showMessageDialog(null, "Datos de devolucion guardados");
         
+        //Elimina el prestamo
         frm_prestamo.contenedorPrestamos.remove(buscar);
         
         txt_idDevolucion.setText("");
@@ -454,6 +512,11 @@ public class frm_devolucion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -467,9 +530,14 @@ public class frm_devolucion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private com.toedter.calendar.JDateChooser jdate_devolucion;
+    private com.toedter.calendar.JDateChooser jdate_fecha;
     private com.toedter.calendar.JDateChooser jdate_hoy;
     private com.toedter.calendar.JDateChooser jdate_inicio;
+    private javax.swing.JTextField txt_autor;
+    private javax.swing.JTextField txt_cantidad;
     private javax.swing.JTextField txt_dias;
+    private javax.swing.JTextField txt_edicion;
+    private javax.swing.JTextField txt_editorial;
     private javax.swing.JTextField txt_idDevolucion;
     private javax.swing.JTextField txt_idLibro;
     private javax.swing.JTextField txt_idPrestamo;
